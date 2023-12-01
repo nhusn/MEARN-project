@@ -1,0 +1,131 @@
+.banner {
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.banner button {
+    width: 150px;
+    min-height: 50px;
+    background-color: #d16527;
+    clip-path: polygon(10% 0, 100% 0%, 100% 60%, 90% 100%, 0% 100%, 0 40%);
+    border: 3px solid #d16527;
+    color: white;
+    font-weight:600 ;
+    transition: clip-path .2s linear;
+
+}
+.banner button:hover{
+    clip-path: polygon(0% 0, 100% 0%, 100% 60%, 100% 100%, 0% 100%, 0 40%);
+    background-color: black;
+}
+.banner p{
+    font-size: large;
+}
+.bannerImageCol{
+    display: flex;
+    justify-content: center;
+    overflow-y: hidden;
+
+
+}
+.bannerImgg:hover .headlights{
+    opacity: 1;
+}
+.headlights{
+    margin-top: -61%;
+    justify-content: center;
+    transition: .3s ease-in;
+    opacity: 0;
+}
+.bannerImgg{
+    height: 100%;
+    text-align: center;
+    margin-top: 10%;
+}
+.history{
+    background-color: #161616;
+    padding: 8% 5% 5% 5%;
+}
+.experience:hover .hori-line{
+    background-color: #ff5e00;
+}
+
+.hori-line{
+    height: 2px;
+    width: 100%;
+    background-color: #4e4946;
+    margin-bottom: 5%;
+    transition: .1s background-color ease-in;
+}
+
+.Our-server-button button{
+    height: 60px;
+    padding: 0% 30px;
+    background-color: #d16527;
+    clip-path: polygon(10% 0, 100% 0%, 100% 60%, 90% 100%, 0% 100%, 0 40%);
+    border: 3px solid #d16527;
+    color: white;
+    font-weight:600 ;
+    transition: clip-path .2s linear;
+}
+
+.Our-server-button button:hover{
+    clip-path: polygon(0% 0, 100% 0%, 100% 60%, 100% 100%, 0% 100%, 0 40%);
+    background-color: black;
+}
+.service-details button{
+    padding: 0px 6px 0px 6px;
+    clip-path: polygon(30% 0, 100% 0%, 100% 70%, 80% 100%, 0% 100%, 0 30%);
+    border: 0px solid;
+    background-color: #d16527;
+    margin-right: 5px;
+}
+.horiz-line{
+    height: .5px;
+    width: 100%;
+    background-color: #4e4946;
+    margin-bottom: 5%;
+    transition: .1s background-color ease-in;
+    margin-bottom: 60px;
+}
+.horiz-line::before{
+    content: "";
+    position: absolute;
+    height: .5px;
+    width: 30.2%;
+    background-color: #ff5e00;
+    transform: scaleX(0);
+    transition: transform 0.2s linear;
+}
+.service-details:hover .horiz-line:before{
+   transform: scaleX(1);
+}
+.service-details:hover i{
+    color: #ff5e00;
+}
+
+.sliding-button{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.sliding-button p{
+    font-size: 16px;
+    position: relative;
+}
+.sliding-button p::before{
+    content: "DETAILS SERVICE";
+    position: absolute;
+    width: 0%;
+    height: 100%;
+    overflow: hidden;
+    color: #ff5e00;
+    transition: .2s ease-in-out;
+}
+.sliding-button p:hover::before{
+    width: 100%;
+    overflow: hidden;
+}

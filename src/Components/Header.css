@@ -1,0 +1,13 @@
+.navi{
+    color: white;
+    cursor: pointer;
+}
+
+.navi:hover{
+    color: #d16527;
+}
+.head{
+    position: fixed;
+    z-index: 1;
+    background-color: black;
+}
