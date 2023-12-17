@@ -1,0 +1,56 @@
+.Price-book{
+    padding: 170px 60px;
+    position: relative;
+}
+.Price-book::before{
+    content: "";
+    position: absolute;
+    background-image: url("https://demo.bravisthemes.com/promotors/wp-content/uploads/2022/07/book-bg1.jpg");
+    background-size: cover;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.2;
+    z-index: 0;
+}
+.price-book-hover h3{
+    font-size: 44px;
+   position: relative;
+   z-index: 1;
+}
+.Price-book h1{
+    font-size: 80px;
+    position: absolute;
+    top: -65%;
+    color: #d16527;
+    z-index: 0;
+    opacity: .4;
+    color: transparent;
+    -webkit-text-stroke-width: 1.5px;
+    -webkit-text-stroke-color: rgb(124, 110, 110);
+    transition: .3s ease;
+}
+.price-book-hover{
+    position: relative;    
+}
+.price-book-hover:hover h1{
+    cursor: pointer;
+    top: -95%;
+}
+.Price-book button {
+    margin-top: 23px;
+    width: 230px;
+    min-height: 60px;
+    background-color: #d16527;
+    clip-path: polygon(10% 0, 100% 0%, 100% 60%, 90% 100%, 0% 100%, 0 40%);
+    border: 3px solid #d16527;
+    color: white;
+    font-weight: 600;
+    transition: clip-path .2s linear;
+}
+
+.Price-book button:hover {
+    clip-path: polygon(0% 0, 100% 0%, 100% 60%, 100% 100%, 0% 100%, 0 40%);
+    background-color: black;
+}

@@ -4,8 +4,8 @@ import './Cleaning.css'
 
 function Cleaning() {
   return (
-    <>
-      <Row>
+    <div className='mb-5'>
+      <Row style={{margin:"auto"}}>
         <Col className='cleaning-image' lg={6} sm={12}>
             <img src="https://demo.bravisthemes.com/promotors/wp-content/uploads/2022/08/service-bg-01.jpg" alt="cleaning" />
         </Col>
@@ -26,7 +26,7 @@ function Cleaning() {
         </Col>
       </Row>  
 
-      <Row>
+      <Row style={{margin:"auto"}}>
         <Col lg={6} sm={12}>
         <div className='w-100 cleaning-det-left px-5'>
             <h3>RUBBING, WAXING, AND POLISHING</h3>
@@ -39,7 +39,7 @@ function Cleaning() {
             <img src="https://demo.bravisthemes.com/promotors/wp-content/uploads/2022/08/service-bg-02.jpg" alt="cleaning" />
         </Col>
       </Row> 
-    </>
+    </div>
   )
 }
 

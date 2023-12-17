@@ -1,0 +1,119 @@
+.Service-page{
+    padding-top: 100px;
+}
+.service-banner{
+    width: 100%;
+    height: 200px;
+    padding: 60px 0 0 60px;
+    background: url('../Asset/Service_banner_pic.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+.nav-serv{
+    margin-top: 3px;
+}
+.nav-serv::before{
+    content: "\1F78D";
+    color:#ff5e00;
+    font-weight: bold;
+    display: inline-block; 
+    width: 1em;
+}
+.cardOfService{
+    width: 100%;    
+    padding:0px 40px 60px 40px;
+    background-color: #121212;
+    position: relative;
+    overflow: hidden;
+}
+
+.cardOfService p{
+    color: white;
+}
+.bg-image-effect{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 30%;
+    z-index: 0;
+    opacity: 1;
+    transition: top .3s ease-in-out;
+}
+.bg-image-effect img{
+    opacity: 0;
+    transition: opacity .3s ease-in-out ;
+}
+.cardOfService:hover .bg-image-effect img{
+    opacity: .6;
+}
+.cardOfService:hover .bg-image-effect{
+    opacity: 1;
+    top: 5%;
+}
+.service-horiz{
+    height: 0px;
+    width: 100%;
+    margin-bottom: 60px;
+    background-color: #6f6966;
+    transition: .1s background-color ease-in;
+
+}
+.main-service-col{
+    /* position: relative;
+    width: 100%; */
+}
+.service-horiz::before{
+    content: "";
+    position: absolute;
+    margin-left: -52px;
+    height: .9px;
+    width: 100%;
+    background-color: #ff5e00;
+    transform: scaleX(0);
+    transition: transform 0.2s linear;
+}
+.cardOfService:hover  .service-horiz:before{
+    transform: scaleX(1);
+
+}
+.dot{
+    display: flex;
+}
+.dot::before{
+    content: "\25A0";
+    color:#ff5e00;
+    font-weight: bold;
+    display: inline-block; 
+    width: 1rem;
+}
+.cardOfService span{
+    color: #464545;
+    margin-right: 10px;
+}
+
+
+
+
+
+.info-card{
+    padding: 30px;
+    border: 1px solid grey;
+    margin:150px 50px 50px 50px;
+    
+}
+.info-cards{
+    padding: 30px;
+    border: 1px solid grey;
+    margin:50px;
+}
+.info-card,.info-cards p{
+    color: rgb(218, 214, 214);
+}
+.fixed-cols{
+    position: sticky;
+    top: 100px;
+}
+

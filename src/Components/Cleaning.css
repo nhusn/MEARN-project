@@ -39,6 +39,7 @@
 
 .cleaning-image{
     padding-left: 0px;
+    opacity: .7;
 }
 
 .cleaning-image:hover img{

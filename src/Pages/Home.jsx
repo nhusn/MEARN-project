@@ -6,33 +6,34 @@ import light from '../Asset/Light.png'
 import './Home.css'
 import Plans from '../Components/Plans'
 import Cleaning from '../Components/Cleaning'
+import HTService from '../Components/HTService'
 
 function Home() {
     return (
         <div>
-            <Header />
-
-            <Row>
-                <Col lg={6} sm={12} className='banner flex-colum'>
-                    <div className='ms-5'>
-                        <h1> MAINTENANCE & <br /> REPAIR SERVICE</h1>
-                        <p>Lenmotors is one of the leading units specialising in a vehicle service and maintenance through kerala.Need a vehicle service at home , this will be a useful choice</p>
-                        <button>GET SERVICE</button>
-                    </div>
-
-                </Col>
-                <Col lg={6} sm={12} className='bannerImageCol'>
-                    <div className='bannerImgg'>
-                        <img className='img-fluid CarImg' src={Car} alt="banner image" />
-
-                        <div className='headlights'>
-                            <img className='img-fluid' src={light} alt="" />
+           <div className='home-page'>
+                <Row style={{margin:"auto"}}>
+                    <Col lg={6} sm={12} className='banner flex-colum'>
+                        <div className='ms-5'>
+                            <h1> MAINTENANCE & <br /> REPAIR SERVICE</h1>
+                            <p>Lenmotors is one of the leading units specialising in a vehicle service and maintenance through kerala.Need a vehicle service at home , this will be a useful choice</p>
+                            <button>GET SERVICE</button>
                         </div>
-                    </div>
-                </Col>
-            </Row>
+    
+                    </Col>
+                    <Col lg={6} sm={12} className='bannerImageCol'>
+                        <div className='bannerImgg'>
+                            <img className='img-fluid CarImg' src={Car} alt="banner image" />
+    
+                            <div className='headlights'>
+                                <img className='img-fluid' src={light} alt="" />
+                            </div>
+                        </div>
+                    </Col>
+                </Row>
+           </div>
 
-            <Row className='justify-content-around history'>
+            <Row style={{margin:"auto"}} className='justify-content-around history'>
                 <Col lg={3} md={6} sm={6} xs={6} className='experience'>
                     <h1>2+ </h1>
                     <div className='hori-line'></div>
@@ -60,7 +61,7 @@ function Home() {
                 <button>ALL SERVICES</button>
             </div>
 
-            <Row className='p-5'>
+            <Row style={{margin:"auto"}} className='p-5'>
                 <Col lg={4} md={4} sm={6} xs={12} className='service-details'>
                     <div className='horiz-line'></div>
                     <i style={{ fontSize: "50px" }} class="fa-solid fa-screwdriver-wrench"></i>
@@ -90,7 +91,7 @@ function Home() {
                 </Col>
             </Row>
             
-            <Row className='p-5'>
+            <Row style={{margin:"auto"}} className='p-5'>
                 <Col lg={4} md={4} sm={6} xs={12} className='service-details'>
                     <div className='horiz-line'></div>
                     <i style={{ fontSize: "50px" }} class="fa-solid fa-temperature-low"></i>
@@ -123,6 +124,8 @@ function Home() {
             <Plans/>
 
             <Cleaning/>
+
+            <HTService/>
         </div>
     )
 }
