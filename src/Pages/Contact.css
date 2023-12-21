@@ -1,0 +1,114 @@
+.contact-info-card{
+    width: 100%;
+    height: 230px;
+    border: 1px solid grey;
+    margin:50px 50px 50px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+.contact-info-cards{
+    width: 100%;
+    height: 230px;
+    border: 1px solid grey;
+    margin-top:50px;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    padding-left:30px ;
+    
+}
+.contact-info-card,.contact-info-cards p{
+    color: rgb(218, 214, 214);
+}
+.contact-info-cardss p{
+    color: rgb(218, 214, 214);
+    margin-top: -12px;
+}
+.contact-info-cardss{
+    width: 100%;
+    height: 230px;
+    border: 1px solid grey;
+    margin:50px 0px 50px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.forms-col{
+    position: relative;
+}
+
+.forms-col input{
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    /* border-bottom: 2px solid grey; */
+    outline: none;
+    margin-top: 7px;
+    padding-bottom: 5px;
+    font-size: 15px;
+    z-index: 1;
+    color: white;
+}
+.forms-col input[type="date"]::-webkit-calendar-picker-indicator {
+    color: rgba(0, 0, 0, 0);
+    opacity: 0;
+    z-index: 0;
+    background-color:transparent ;
+    width: 85% ;
+    height: 20px;
+    border-width: thin;
+}
+
+.forms-col input[type="time"]::-webkit-calendar-picker-indicator {
+    color: rgba(0, 0, 0, 0);
+    opacity: 0;
+    background-color:blue ;
+    color: #ff5e00;
+    width: 87% ;
+    height: 20px;
+    border-width: thin;
+}
+
+.form-underline{
+    position: absolute;
+    height: 2px;
+    width: 97%;
+    background-color: grey;
+    bottom: 0;
+}
+
+.form-underline::before{
+    position: absolute;
+    content: "";
+    background-color: #ff5e00;
+    width: 100%;
+    height: 100%;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.forms-col input:focus ~ .form-underline:before{
+    transform: scaleX(1);
+}
+
+.contact-page button {
+    margin-top: 33px;
+    /* margin-left: 5%; */
+    width: 230px;
+    min-height: 60px;
+    background-color: #d16527;
+    clip-path: polygon(10% 0, 100% 0%, 100% 60%, 90% 100%, 0% 100%, 0 40%);
+    border: 3px solid #d16527;
+    color: white;
+    font-weight: 600;
+    transition: clip-path .2s linear;
+}
+
+.contact-page button:hover {
+    clip-path: polygon(0% 0, 100% 0%, 100% 60%, 100% 100%, 0% 100%, 0 40%);
+    background-color: black;
+}

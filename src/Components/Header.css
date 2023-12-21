@@ -12,3 +12,21 @@
     z-index: 2;
     background-color: black;
 }
+.login-butt{
+    text-align: right;
+    margin: 20px;
+}
+.login-butt button {
+    width: 150px;
+    min-height: 50px;
+    background-color: #d16527;
+    clip-path: polygon(10% 0, 100% 0%, 100% 60%, 90% 100%, 0% 100%, 0 40%);
+    border: 3px solid #d16527;
+    color: white;
+    font-weight:600 ;
+    transition: clip-path .2s linear;
+}
+.login-butt button:hover{
+    clip-path: polygon(0% 0, 100% 0%, 100% 60%, 100% 100%, 0% 100%, 0 40%);
+    background-color: black;
+}

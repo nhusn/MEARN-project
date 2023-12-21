@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import aboutSideImg from '../Asset/About-side-image.jpg'
 import HTService from '../Components/HTService'
 import './About.css'
+import Footer from '../Components/Footer'
 
 function About() {
     return (
@@ -56,8 +57,9 @@ function About() {
                 </Col>
                 <Col lg={3}></Col>
             </Row>
-
+            <Footer/>
         </div>
+        
     )
 }
 

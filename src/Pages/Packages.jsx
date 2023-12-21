@@ -3,11 +3,12 @@ import './Package.css'
 import { Link } from 'react-router-dom'
 import Plans from '../Components/Plans'
 import { Col, Row } from 'react-bootstrap'
+import Footer from '../Components/Footer'
 
 function Packages() {
-  return (
-    <div style={{paddingTop:"100px"}}>
-        <div className='service-banner'>
+    return (
+        <div style={{ paddingTop: "100px" }}>
+            <div className='service-banner'>
                 <div className='d-flex'>
                     <Link style={{ textDecoration: "none", color: "white" }} to={'/'}>HOME</Link>
                     <h6 style={{ color: "#d16527" }} className='ms-3 nav-serv'>Packages</h6>
@@ -15,9 +16,9 @@ function Packages() {
                 <h1>PACKAGES</h1>
             </div>
             <div>
-                <Plans/>
+                <Plans />
             </div>
-            <Row style={{margin:"auto"}} className='Price-book'>
+            <Row style={{ margin: "auto" }} className='Price-book'>
                 <Col lg={8}>
                     <div>
                         <div className='price-book-hover'>
@@ -30,8 +31,10 @@ function Packages() {
                 </Col>
                 <Col lg={4}></Col>
             </Row>
-    </div>
-  )
+
+            <Footer/>
+        </div>
+    )
 }
 
 export default Packages

@@ -7,6 +7,7 @@ import './Home.css'
 import Plans from '../Components/Plans'
 import Cleaning from '../Components/Cleaning'
 import HTService from '../Components/HTService'
+import Footer from '../Components/Footer'
 
 function Home() {
     return (
@@ -126,6 +127,8 @@ function Home() {
             <Cleaning/>
 
             <HTService/>
+
+            <Footer/>
         </div>
     )
 }

@@ -7,6 +7,7 @@ import engineImg from '../Asset/Engine.png'
 import bodyImg from '../Asset/body.png'
 import seatImg from '../Asset/seat.png'
 import axilImg from '../Asset/axil.png'
+import Footer from '../Components/Footer'
 
 function Service() {
   return (
@@ -179,6 +180,7 @@ function Service() {
           </div>
         </Col>
       </Row>
+      <Footer/>
     </div>
   )
 }
