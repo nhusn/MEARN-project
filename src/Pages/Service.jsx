@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Service.css'
 import { Link } from 'react-router-dom'
 import { Col, Row } from 'react-bootstrap'
@@ -8,8 +8,11 @@ import bodyImg from '../Asset/body.png'
 import seatImg from '../Asset/seat.png'
 import axilImg from '../Asset/axil.png'
 import Footer from '../Components/Footer'
+import Dashboard from '../Components/Dashboard'
+
 
 function Service() {
+  const [isLoggedIn,setIsLoggedIn]=useState(true)
   return (
     <div className='Service-page'>
       <div className='service-banner'>
@@ -19,7 +22,13 @@ function Service() {
         </div>
         <h1>SERVICES</h1>
       </div>
-      <Row style={{margin:'auto'}}>
+      {
+        isLoggedIn?
+          <div>
+            <Dashboard/>
+          </div>
+          :
+        <Row style={{margin:'auto'}}>
         <Col style={{ paddingLeft: "90px", paddingTop: "150px" }}>
 
           <Row className='cardOfService'>
@@ -146,8 +155,8 @@ function Service() {
           <div className='fixed-cols'>
             <div className='info-card'>
               <h3>ADDRESS</h3>
-              <p>12th block civil line road kakkanad,Ernakulam 682042 Kerala India</p>
-              <p>Kadarali Stadium  perinthalmanna,Malappuram 679321 Kerala India</p>
+              <p>12th block civil line road Kakkanad,Ernakulam 682042 Kerala India</p>
+              <p>Kadar-Ali Stadium  Perinthalmanna,Malappuram 679321 Kerala India</p>
             </div>
   
             <div className='info-cards'>
@@ -180,6 +189,7 @@ function Service() {
           </div>
         </Col>
       </Row>
+      }
       <Footer/>
     </div>
   )

@@ -1,0 +1,40 @@
+.service-history{
+  border-collapse: collapse;
+  width: 100%;
+}
+.service-history{
+    table-layout: fixed;
+    padding: 100px;
+}
+#service-history-table td, #service-history-table th {
+    padding: 8px;
+    border-bottom: 1px solid grey;
+
+}
+#service-history-table th {
+    padding:12px 0px;
+    text-align: left;
+    color: white;
+}
+#service-history-table{
+    position: relative;
+    width: 100%;
+    border: 1px solid grey;
+    background-color: black;
+    z-index: 1;
+}
+.serv-history-title h5{
+    position: absolute;
+    top: -20%;
+    z-index: 0;
+    opacity: .4;
+    -webkit-text-stroke-color: rgb(124, 110, 110);
+    transition: .3s ease;
+}
+.serv-history-group {
+    position: relative;
+}
+.serv-history-group:hover h5{
+    top: -30%;
+    opacity: 1;
+}

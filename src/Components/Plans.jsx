@@ -1,6 +1,7 @@
 import React from 'react'
 import { Col, Row } from 'react-bootstrap'
 import './Plans.css'
+import { Link } from 'react-router-dom'
 
 function Plans() {
     return (
@@ -29,7 +30,7 @@ function Plans() {
                             <div className='d-flex justify-content-between'><p>All routine maintenance</p><i class="fa-solid fa-xmark"></i> </div>
                             <div className='d-flex justify-content-between'><p>24/7 customer service</p><i class="fa-solid fa-xmark"></i> </div>
                         </div>
-                        <button>ALL SERVICES</button>
+                        <Link style={{width:"100%"}} to={'/login'}><button>SUBSCRIBE</button></Link>
                     </div>
                 </Col>
 
@@ -48,7 +49,7 @@ function Plans() {
                             <div className='d-flex justify-content-between service-check'><p>All routine maintenance</p><i class="fa-solid fa-check"></i> </div>
                             <div className='d-flex justify-content-between service-check'><p>24/7 customer service</p><i class="fa-solid fa-check"></i> </div>
                         </div>
-                        <button>ALL SERVICES</button>
+                        <Link style={{width:"100%"}} to={'/login'}><button>SUBSCRIBE</button></Link>
                     </div>
                 </Col>
             </Row>

@@ -70,31 +70,31 @@ function Contact() {
                 <Row style={{margin:"auto"}} className='p-5'>   
                     <Col lg={6} className='forms-col'>
                         <label htmlFor="uname">YOUR NAME</label><br />
-                        <input type="text" name='uname' placeholder='Enter Your Name' />
+                        <input type="text" name='uname' placeholder='Enter Your Name' required/>
                         <div className="form-underline"></div>
                     </Col>
                     <Col lg={6} className='forms-col'>
                         <label htmlFor="uname">YOUR EMAIL</label><br />
-                        <input type="text"  name='uname' placeholder='Enter Your Email' />
+                        <input type="text"  name='uname' placeholder='Enter Your Email' required/>
                         <div className="form-underline"></div>
                     </Col>
                 </Row>
                 <Row style={{margin:"auto"}} className='px-5 mt-3'>   
                     <Col lg={6} className='forms-col'>
                         <label htmlFor="uname">SELECT DATE</label><br />
-                        <input type="date" id='uname' />
+                        <input type="date" id='uname' required/>
                         <div className="form-underline"></div>
                     </Col>
                     <Col lg={6} className='forms-col'>
                         <label>SELECT TIME</label><br />
-                        <input type="time" name='uname'/>
+                        <input type="time" name='uname' required/>
                         <div className="form-underline"></div>
                     </Col>
                 </Row>
                 <Row style={{margin:"auto"}} className='px-5 mt-5'>   
                     <Col lg={12} className='forms-col'>
                         <label htmlFor="uname">YOUR MESSAGE</label><br />
-                        <input type="text" name='uname' placeholder='Describe Your Problem' />
+                        <input type="text" name='uname' placeholder='Describe Your Problem' required/>
                         <div style={{width:"98%"}} className="form-underline"></div>
                     </Col>
                 </Row>
