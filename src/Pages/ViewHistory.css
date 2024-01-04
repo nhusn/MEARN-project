@@ -1,6 +1,9 @@
 #view-history{
     margin: 150px 0px;
 }
+.full-history-div{
+    background-color: #060606;
+}
 #service-details-table td, #service-details-table th {
     padding: 8px;
     /* border: .5px solid white; */
@@ -19,4 +22,19 @@
     background-color: black;
     z-index: 1;
     margin-top: 60px;
+}
+
+.pdf-dwnld-btn button{
+    width: 150px;
+    min-height: 50px;
+    background-color: #d16527;
+    clip-path: polygon(10% 0, 100% 0%, 100% 60%, 90% 100%, 0% 100%, 0 40%);
+    border: 3px solid #d16527;
+    color: white;
+    font-weight:600 ;
+    transition: clip-path .2s linear;
+}
+.pdf-dwnld-btn button:hover{
+    clip-path: polygon(0% 0, 100% 0%, 100% 60%, 100% 100%, 0% 100%, 0 40%);
+    background-color: black;
 }
