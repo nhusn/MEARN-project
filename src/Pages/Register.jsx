@@ -11,7 +11,7 @@ function Register() {
                 <Col lg={4} className=''>
                     <div style={{ height: "80vh" }} className='d-flex justify-content-center align-items-center flex-column w-100'>
                         <div className='register-style-div'>
-                            <div className='heading-div'><h4>CUSTOMER REGISTER</h4></div>
+                            <div className='reg-heading-div'><h4>CUSTOMER REGISTER</h4></div>
                             <div className='form-div'>
                                 <form>
                                     <div className='register-inputs'>

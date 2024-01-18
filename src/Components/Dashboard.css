@@ -1,10 +1,10 @@
 .service-history{
   border-collapse: collapse;
-  width: 100%;
+  /* width: 100%; */
 }
 .service-history{
     table-layout: fixed;
-    padding: 100px;
+    padding: 50px 20px 50px 50px;
 }
 #service-history-table td, #service-history-table th {
     padding: 8px;
@@ -37,4 +37,94 @@
 .serv-history-group:hover h5{
     top: -30%;
     opacity: 1;
+}
+
+
+.vehicle-info{
+    position: relative;
+}
+.vehicle-info input{
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    /* border-bottom: 2px solid grey; */
+    outline: none;
+    margin-top: 7px;
+    padding-bottom: 5px;
+    font-size: 15px;
+    z-index: 1;
+    color: white;
+}
+.veh-form-underline{
+    position: absolute;
+    height: 2px;
+    width: 97%;
+    background-color: grey;
+    bottom: 0;
+}
+.veh-form-underline::before{
+    position: absolute;
+    content: "";
+    background-color: #ff5e00;
+    width: 100%;
+    height: 100%;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.vehicle-info input:focus ~ .veh-form-underline:before,
+.vehicle-info input:valid ~ .veh-form-underline:before{
+    transform: scaleX(1);
+}
+.vehicle-info select{
+    width: 97%;
+    background-color: #060606;
+    color: white;
+    outline: none;
+    border: 0px;
+}
+.vehicle-info select:valid ~ .veh-form-underline::before,
+.vehicle-info select:focus ~ .veh-form-underline::before{
+    transform: scaleX(1);
+}
+.vehicle-info textarea:valid ~ .veh-form-underline::before,
+.vehicle-info textarea:focus ~ .veh-form-underline::before{
+    transform: scaleX(1);
+}
+
+.ong-serv-group{
+    position: relative;
+}
+.ong-service{
+    border: 2px solid grey;
+    padding: 30px 20px;
+    margin-top: 20px;
+    position: relative;
+    background-color: #060606;
+    z-index: 1;
+}
+.ong-service-title{
+    position: absolute;
+    top: -17px;
+    z-index: 0;
+    transition: all 0.3s ease;
+    opacity: .4;
+}
+.ong-serv-group:hover .ong-service-title{
+    top: -30px;
+    opacity: 1;
+}
+.service-button{
+    width: 150px;
+    min-height: 50px;
+    background-color: #d16527;
+    clip-path: polygon(10% 0, 100% 0%, 100% 60%, 90% 100%, 0% 100%, 0 40%);
+    border: 3px solid #d16527;
+    color: white;
+    font-weight:600 ;
+    transition: clip-path .2s linear;
+}
+.service-button:hover{
+    clip-path: polygon(0% 0, 100% 0%, 100% 60%, 100% 100%, 0% 100%, 0 40%);
+    background-color: black;
 }

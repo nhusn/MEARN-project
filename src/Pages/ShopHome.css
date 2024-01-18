@@ -1,0 +1,132 @@
+.shop-veh-detail{
+    margin: auto;
+    border: 2px solid grey;
+    padding: 20px 10px;
+}
+.view-button{
+    width: 90px;
+    min-height: 30px;
+    background-color: blue;
+    clip-path: polygon(10% 0, 100% 0%, 100% 60%, 90% 100%, 0% 100%, 0 40%);
+    border: 3px solid blue;
+    color: white;
+    font-size: 13px;
+    font-weight:600 ;
+    transition: clip-path .2s linear;
+}
+.view-button:hover{
+    clip-path: polygon(0% 0, 100% 0%, 100% 60%, 100% 100%, 0% 100%, 0 40%);
+    background-color: black;
+}
+.call-btn{
+    width: 90px;
+    min-height: 30px;
+    background-color: #0b841b;
+    clip-path: polygon(10% 0, 100% 0%, 100% 60%, 90% 100%, 0% 100%, 0 40%);
+    border: 3px solid #0b841b;
+    color: white;
+    font-size: 13px;
+    font-weight:600 ;
+    transition: clip-path .2s linear;
+}
+.call-btn:hover{
+    clip-path: polygon(0% 0, 100% 0%, 100% 60%, 100% 100%, 0% 100%, 0 40%);
+    background-color: black;
+}
+.confirm-btn{
+    width: 90px;
+    min-height: 30px;
+    background-color: #d16527;
+    clip-path: polygon(10% 0, 100% 0%, 100% 60%, 90% 100%, 0% 100%, 0 40%);
+    border: 3px solid #d16527;
+    color: white;
+    font-size: 13px;
+    font-weight:600 ;
+    transition: clip-path .2s linear;
+}
+.confirm-btn:hover{
+    clip-path: polygon(0% 0, 100% 0%, 100% 60%, 100% 100%, 0% 100%, 0 40%);
+    background-color: black;
+}
+.cancel-btn{
+    width: 90px;
+    min-height: 30px;
+    background-color: red;
+    clip-path: polygon(10% 0, 100% 0%, 100% 60%, 90% 100%, 0% 100%, 0 40%);
+    border: 3px solid red;
+    color: white;
+    font-size: 13px;
+    font-weight:600 ;
+    transition: clip-path .2s linear;
+}
+.cancel-btn:hover{
+    clip-path: polygon(0% 0, 100% 0%, 100% 60%, 100% 100%, 0% 100%, 0 40%);
+    background-color: black;
+}
+.shop-ong-service{
+    border: 2px solid grey;
+    padding: 30px 20px;
+    margin-top: 20px;
+    position: relative;
+    background-color: #060606;
+    z-index: 1;
+}
+.modal-button{
+    width: 80px;
+    min-height: 30px;
+    clip-path: polygon(10% 0, 100% 0%, 100% 60%, 90% 100%, 0% 100%, 0 40%);
+    background-color: red;
+    border: 3px solid red;
+    font-size: 10px;
+    color: white;
+    font-weight:600 ;
+    transition: clip-path .2s linear;
+}
+.modal-button:hover{
+    clip-path: polygon(0% 0, 100% 0%, 100% 60%, 100% 100%, 0% 100%, 0 40%);
+    background-color: black;
+}
+.modal-button-confirm{
+    width: 80px;
+    min-height: 30px;
+    background-color: #d16527;
+    clip-path: polygon(10% 0, 100% 0%, 100% 60%, 90% 100%, 0% 100%, 0 40%);
+    border: 3px solid #d16527;
+    font-size: 11px;
+    color: white;
+    font-weight:600 ;
+    transition: clip-path .2s linear;
+}
+.modal-button-confirm:hover{
+    clip-path: polygon(0% 0, 100% 0%, 100% 60%, 100% 100%, 0% 100%, 0 40%);
+    background-color: black;
+}
+.call-btn-ong{
+    width: 90px;
+    min-height: 30px;
+    background-color: #0b841b;
+    clip-path: polygon(10% 0, 100% 0%, 100% 60%, 90% 100%, 0% 100%, 0 40%);
+    border: 3px solid #0b841b;
+    color: white;
+    font-weight:600 ;
+    transition: clip-path .2s linear;
+}
+.call-btn-ong:hover{
+    clip-path: polygon(0% 0, 100% 0%, 100% 60%, 100% 100%, 0% 100%, 0 40%);
+    background-color: black;
+}
+.create-btn{
+    width: 80%;
+    min-height: 50px;
+    background-color: #d16527;
+    clip-path: polygon(10% 0, 100% 0%, 100% 60%, 90% 100%, 0% 100%, 0 40%);
+    border: 3px solid #d16527;
+    color: white;
+    font-weight:600 ;
+    transition: clip-path .2s linear;
+    margin-top: 10px;
+}
+.create-btn:hover{
+    clip-path: polygon(0% 0, 100% 0%, 100% 60%, 100% 100%, 0% 100%, 0 40%);
+    background-color: black;
+}

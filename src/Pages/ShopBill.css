@@ -1,0 +1,40 @@
+.bill-date[type="date"]::-webkit-calendar-picker-indicator {
+    color:white;
+    background-color:white ;
+    border-width: thin;
+}
+.selection-input{
+    width: 97%;
+    background-color: #060606;
+    color: white;
+    outline: none;
+    border: 0px;
+}
+.add-button{
+    width: 90px;
+    min-height: 30px;
+    background-color: #d16527;
+    clip-path: polygon(10% 0, 100% 0%, 100% 60%, 90% 100%, 0% 100%, 0 40%);
+    border: 3px solid #d16527;
+    color: white;
+    font-size: 13px;
+    font-weight:600 ;
+    transition: clip-path .2s linear;
+}
+.add-button:hover{
+    clip-path: polygon(0% 0, 100% 0%, 100% 60%, 100% 100%, 0% 100%, 0 40%);
+    background-color: black;
+}
+.number-without-arrows::-webkit-outer-spin-button,
+.number-without-arrows::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.table-buttons{
+    text-align: center;
+    cursor: pointer;
+}
+.table-buttons:hover{
+   color: #d16527;
+
+}

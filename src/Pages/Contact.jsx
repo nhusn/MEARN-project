@@ -5,6 +5,10 @@ import { Col, Row } from 'react-bootstrap'
 import Footer from '../Components/Footer'
 
 function Contact() {
+
+    const date = (new Date()).toLocaleDateString('sv-SE')
+    console.log(date);
+
     return (
         <div style={{ paddingTop: "100px" }} className='contact-page'>
             <div className='service-banner'>
@@ -62,12 +66,12 @@ function Contact() {
                 </Row>
                 <Row style={{margin:"auto",color:"white"}} className='px-5'>
                     <Col lg={7}>
-                    <h3 style={{marginTop:'70px'}}>REQUEST AN APPOINTMENT ONLINE</h3>
-                    <p style={{fontSize:'18px'}}>After you submit the form, a representative will call you back with the information you’ll need to make an appointment.</p>
+                    <h3 style={{marginTop:'70px'}}>REQUEST FOR ANY DOUBTS</h3>
+                    <p style={{fontSize:'18px'}}>After you submit the form, a representative will call you back with the information</p>
                     </Col>
                     <Col></Col>
                 </Row>
-                <Row style={{margin:"auto"}} className='p-5'>   
+                {/* <Row style={{margin:"auto"}} className='p-5'>   
                     <Col lg={6} className='forms-col'>
                         <label htmlFor="uname">YOUR NAME</label><br />
                         <input type="text" name='uname' placeholder='Enter Your Name' required/>
@@ -78,11 +82,11 @@ function Contact() {
                         <input type="text"  name='uname' placeholder='Enter Your Email' required/>
                         <div className="form-underline"></div>
                     </Col>
-                </Row>
+                </Row> */}
                 <Row style={{margin:"auto"}} className='px-5 mt-3'>   
                     <Col lg={6} className='forms-col'>
                         <label htmlFor="uname">SELECT DATE</label><br />
-                        <input type="date" id='uname' required/>
+                        <input type="date" id='uname' required min={date}/>
                         <div className="form-underline"></div>
                     </Col>
                     <Col lg={6} className='forms-col'>

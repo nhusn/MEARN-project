@@ -38,3 +38,7 @@
     clip-path: polygon(0% 0, 100% 0%, 100% 60%, 100% 100%, 0% 100%, 0 40%);
     background-color: black;
 }
+
+.dis-button{
+    background-color: #a85f34;
+}

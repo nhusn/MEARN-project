@@ -10,6 +10,9 @@ import Contact from './Pages/Contact';
 import Login from './Pages/Login';
 import Register from './Pages/Register';
 import ViewHistory from './Pages/ViewHistory';
+import Profile from './Pages/Profile';
+import ShopHome from './Pages/ShopHome';
+import ShopBill from './Pages/ShopBill';
 
 function App() {
   return (
@@ -24,6 +27,9 @@ function App() {
         <Route path='/login' element={<Login/>}/>
         <Route path='/register' element={<Register/>}/>
         <Route path='/view/:id' element={<ViewHistory/>}/>
+        <Route path='/profile' element={<Profile/>}/>
+        <Route path='/shop' element={<ShopHome/>}/>
+        <Route path='/billing' element={<ShopBill/>}/>
       </Routes>
         
     </>

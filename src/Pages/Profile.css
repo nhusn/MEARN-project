@@ -1,4 +1,4 @@
-.login-div{
+.profile-div{
     width: 100%;
     height: 100vh;
     background: url('../Asset/loin-image.jpg');
@@ -7,20 +7,19 @@
     background-repeat: no-repeat;
     
 }
-.login-style-div{
+.pro-heading-div{
+    background-color: rgba(0, 0, 0, 0.4);;
+    padding: 30px;
+    border-radius: 30px 30px 0px 0px;
+    text-align: center;
+}
+.profile-style-div{
     background-color: rgba(0, 0, 0, 0.4);;
     border-radius:30px;
     width: 90%;
 }
-.form-div{
-    padding: 30px;
-}
-.heading-div{
-    background-color: rgba(0, 0, 0, 0.4);;
-    padding: 30px 30px 0px 30px;
-    border-radius: 30px 30px 0px 0px;
-}
-.login-inputs input{
+
+.profile-inputs input{
     width: 100%;
     border: none;
     background-color: transparent;
@@ -29,22 +28,22 @@
     margin-top: 20px;
     color: white;
 }
-.login-inputs ::placeholder{
+.profile-inputs ::placeholder{
     position: absolute;
     left: 30px;
     font-size: 20px;
     opacity: 1;
 }
 
-.login-inputs{
+.profile-inputs{
     position: relative;
 }
-.login-form-underline{
+.profile-form-underline{
     width: 100%;
     height: 1px;
     background-color:grey;
 }
-.login-form-underline::before{
+.profile-form-underline::before{
     position: absolute;
     content: "";
     width: 100%;
@@ -54,41 +53,27 @@
     transition: all .3s ease;
 }
 
-.login-inputs input:focus ~ .login-form-underline::before,
-.login-inputs input:valid ~ .login-form-underline::before{
+.profile-inputs input:focus ~ .profile-form-underline::before,
+.profile-inputs input:valid ~ .profile-form-underline::before{
     transform: scaleX(1);
 }
-.form-div  button{
-    width: 150px;
-    min-height: 50px;
-    background-color: #d16527;
-    clip-path: polygon(10% 0, 100% 0%, 100% 60%, 90% 100%, 0% 100%, 0 40%);
-    border: 3px solid #d16527;
-    color: white;
-    font-weight:600 ;
-    transition: clip-path .2s linear;
-}
+
 .form-div button:hover{
     clip-path: polygon(0% 0, 100% 0%, 100% 60%, 100% 100%, 0% 100%, 0 40%);
     background-color: black;
 }
-.new-account{
-    text-align: right;
-    margin-top: 10px;
-    cursor: pointer;
-}
 
-.login-inputs label {
+.profile-inputs label {
     position: absolute;
     bottom: 5px;
     left: 0;
     pointer-events: none;
     transition: all .3s ease;
 }
-.login-inputs i{
+.profile-inputs i{
     font-size: 25px;
 }
-.login-inputs input:focus ~ label,
-.login-inputs input:valid ~ label{
+.profile-inputs input:focus ~ label,
+.profile-inputs input:valid ~ label{
     transform: translateY(-25px);
 }
