@@ -13,6 +13,7 @@ import ViewHistory from './Pages/ViewHistory';
 import Profile from './Pages/Profile';
 import ShopHome from './Pages/ShopHome';
 import ShopBill from './Pages/ShopBill';
+import EmailVerify from './Pages/EmailVerify';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path='/profile' element={<Profile/>}/>
         <Route path='/shop' element={<ShopHome/>}/>
         <Route path='/billing' element={<ShopBill/>}/>
+        <Route path='/users/:id/verify/:token' element={<EmailVerify/>}/>
       </Routes>
         
     </>

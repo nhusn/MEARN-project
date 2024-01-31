@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import './Service.css'
 import { Link } from 'react-router-dom'
 import { Col, Row } from 'react-bootstrap'
@@ -9,10 +9,13 @@ import seatImg from '../Asset/seat.png'
 import axilImg from '../Asset/axil.png'
 import Footer from '../Components/Footer'
 import Dashboard from '../Components/Dashboard'
+import { isCustomerLoggedInContext } from '../Context/Contexts'
 
 
 function Service() {
   const [isLoggedIn,setIsLoggedIn]=useState(true)
+  const {isCustomerLogged,setIsCustomerLogged} =useContext(isCustomerLoggedInContext)
+
   return (
     <div className='Service-page'>
       <div className='service-banner'>
@@ -23,7 +26,7 @@ function Service() {
         <h1>SERVICES</h1>
       </div>
       {
-        isLoggedIn?
+        isCustomerLogged?
           <div>
             <Dashboard/>
           </div>

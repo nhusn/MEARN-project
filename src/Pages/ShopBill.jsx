@@ -73,13 +73,13 @@ function ShopBill() {
   const [history, setHistory] = useState([])
 
   const [localHistory, setLocalHistory] = useState({
-    LabourPartsCode: "",
-    DescLabourParts: "",
-    BillingType: "",
-    Qty: 1,
-    UOM: "",
-    Rate: 0,
-    Discount: 0
+    labourPartsCode: "",
+    descLabourParts: "",
+    billingType: "",
+    qty: 1,
+    uom: "",
+    rate: 0,
+    discount: 0
   })
 
   const handleDeleteHistory = (index) => {
@@ -87,8 +87,8 @@ function ShopBill() {
     error("Deleted Succesfully")
   }
   const handleAddHistory = () => {
-    const { LabourPartsCode, DescLabourParts, BillingType, Qty, UOM, Rate, Discount } = localHistory
-    if (!LabourPartsCode || !DescLabourParts || !BillingType || Qty<=0 || !UOM || Rate<=0) {
+    const { labourPartsCode, descLabourParts, billingType, qty, uom, rate } = localHistory
+    if (!labourPartsCode || !descLabourParts || !billingType || qty<=0 || !uom || rate<=0) {
       warning("Please Fill the form correctly")
     } else {
       setHistory([...history, localHistory])
@@ -112,13 +112,13 @@ function ShopBill() {
   })
   const [editHistoryIndex, setEditHistoryIndex] = useState()
   const [edithistory, setEditHistory] = useState({
-    LabourPartsCode: "",
-    DescLabourParts: "",
-    BillingType: "",
-    Qty: Number,
-    UOM: "",
-    Rate: Number,
-    Discount: Number
+    labourPartsCode: "",
+    descLabourParts: "",
+    billingType: "",
+    qty: 1,
+    uom: "",
+    rate: 0,
+    discount: 0
   })
   const [editModalshow, setEditModalShow] = useState(false)
   const handleEditModalClose = () => setEditModalShow(false)
@@ -323,15 +323,15 @@ function ShopBill() {
               history && history?.map((hist, index) => (
                 <tr key={index}>
                   <td>{index + 1}</td>
-                  <td>{hist.LabourPartsCode}</td>
-                  <td>{hist.DescLabourParts}</td>
-                  <td>{hist.BillingType}</td>
-                  <td>{hist.Qty}</td>
-                  <td>{hist.UOM}</td>
-                  <td>{hist.Rate}</td>
-                  <td>{(hist.Qty * hist.Rate)}</td>
-                  <td>{hist.Discount}</td>
-                  <td className='text-center'>{(hist.Qty * hist.Rate) - hist.Discount}</td>
+                  <td>{hist.labourPartsCode}</td>
+                  <td>{hist.descLabourParts}</td>
+                  <td>{hist.billingType}</td>
+                  <td>{hist.qty}</td>
+                  <td>{hist.uom}</td>
+                  <td>{hist.rate}</td>
+                  <td>{(hist.qty * hist.rate)}</td>
+                  <td>{hist.discount}</td>
+                  <td className='text-center'>{(hist.qty * hist.rate) - hist.discount}</td>
                   <td className='table-buttons'><i className="fa-solid fa-pen" onClick={() => handleEditModalShow(hist, index)}></i></td>
                   <td className='table-buttons'><i className="fa-solid fa-square-minus" onClick={e => handleDeleteHistory(index)}></i></td>
                 </tr>
@@ -353,15 +353,15 @@ function ShopBill() {
             <div className=''>
               <div className=''>
                 <p style={{ marginBottom: "-1px" }}>Part/Labour Code</p>
-                <input style={{ border: "0px", borderBottom: '1px solid white', backgroundColor: "transparent", color: "white", outline: "none" }} type="text" value={localHistory.LabourPartsCode} onChange={e => setLocalHistory({ ...localHistory, LabourPartsCode: e.target.value })} />
+                <input style={{ border: "0px", borderBottom: '1px solid white', backgroundColor: "transparent", color: "white", outline: "none" }} type="text" value={localHistory.labourPartsCode} onChange={e => setLocalHistory({ ...localHistory, labourPartsCode: e.target.value })} />
               </div>
               <div className='mt-3'>
                 <p style={{ marginBottom: "-1px" }}>Desc. of Part/ Labour</p>
-                <input style={{ border: "0px", borderBottom: '1px solid white', backgroundColor: "transparent", color: "white", outline: "none" }} type="text" value={localHistory.DescLabourParts} onChange={e => setLocalHistory({ ...localHistory, DescLabourParts: e.target.value })} />
+                <input style={{ border: "0px", borderBottom: '1px solid white', backgroundColor: "transparent", color: "white", outline: "none" }} type="text" value={localHistory.descLabourParts} onChange={e => setLocalHistory({ ...localHistory, descLabourParts: e.target.value })} />
               </div>
               <div className='mt-3'>
                 <p style={{ marginBottom: "-1px" }}>Billing Type</p>
-                <select className='selection-input' name="modOfPayment" id="modOfPayment" value={localHistory.BillingType} onChange={e => setLocalHistory({ ...localHistory, BillingType: e.target.value })} required>
+                <select className='selection-input' name="modOfPayment" id="modOfPayment" value={localHistory.billingType} onChange={e => setLocalHistory({ ...localHistory, billingType: e.target.value })} required>
                   <option value="">Select</option>
                   <option value="Paid">Paid</option>
                   <option value="Unpaid">Unpaid</option>
@@ -369,17 +369,17 @@ function ShopBill() {
               </div>
               <div className='mt-3'>
                 <p style={{ marginBottom: "-1px" }}>Discount</p>
-                <input className='number-without-arrows' style={{ border: "0px", borderBottom: '1px solid white', backgroundColor: "transparent", color: "white", outline: "none" }} type="number" min={0} value={localHistory.Discount} onChange={e => setLocalHistory({ ...localHistory, Discount: e.target.value })} />
+                <input className='number-without-arrows' style={{ border: "0px", borderBottom: '1px solid white', backgroundColor: "transparent", color: "white", outline: "none" }} type="number" min={0} value={localHistory.discount} onChange={e => setLocalHistory({ ...localHistory, discount: e.target.value })} />
               </div>
             </div>
             <div>
               <div>
                 <p style={{ marginBottom: "-1px" }}>Quantity</p>
-                <input style={{ border: "0px", borderBottom: '1px solid white', backgroundColor: "transparent", color: "white", outline: "none" }} type="number" min={1} value={localHistory.Qty} onChange={e => setLocalHistory({ ...localHistory, Qty: e.target.value })} />
+                <input style={{ border: "0px", borderBottom: '1px solid white', backgroundColor: "transparent", color: "white", outline: "none" }} type="number" min={1} value={localHistory.qty} onChange={e => setLocalHistory({ ...localHistory, qty: e.target.value })} />
               </div>
               <div className='mt-3'>
                 <p style={{ marginBottom: "-1px" }}>UOM</p>
-                <select className='selection-input' name="modOfPayment" id="modOfPayment" required value={localHistory.UOM} onChange={e => setLocalHistory({ ...localHistory, UOM: e.target.value })}>
+                <select className='selection-input' name="modOfPayment" id="modOfPayment" required value={localHistory.uom} onChange={e => setLocalHistory({ ...localHistory, uom: e.target.value })}>
                   <option value="">Select</option>
                   <option value="Each">Each</option>
                   <option value="Liter">Liter</option>
@@ -388,7 +388,7 @@ function ShopBill() {
               </div>
               <div className='mt-3'>
                 <p style={{ marginBottom: "-1px" }}>Rate</p>
-                <input className='number-without-arrows' style={{ border: "0px", borderBottom: '1px solid white', backgroundColor: "transparent", color: "white", outline: "none" }} type="number" min={0} value={localHistory.Rate==0 ? "" : localHistory.Rate} onChange={e => setLocalHistory({ ...localHistory, Rate: e.target.value })} />
+                <input className='number-without-arrows' style={{ border: "0px", borderBottom: '1px solid white', backgroundColor: "transparent", color: "white", outline: "none" }} type="number" min={0} value={localHistory.rate==0 ? "" : localHistory.rate} onChange={e => setLocalHistory({ ...localHistory, rate: e.target.value })} />
               </div>
             </div>
           </form>

@@ -28,6 +28,11 @@
     margin-top: 20px;
     color: white;
 }
+.register-inputs input::-webkit-outer-spin-button,
+.register-inputs input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 .register-inputs ::placeholder{
     position: absolute;
     left: 30px;

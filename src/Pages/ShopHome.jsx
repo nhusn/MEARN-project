@@ -17,6 +17,7 @@ function ShopHome() {
     return (
         <div style={{ marginTop: "120px" }}>
 
+            {/* Booking Service Pending */}
             <Row style={{ margin: "auto" }}>
                 <h5 className='text-center'>Booking Pending</h5>
                 <Col lg={4}>
@@ -122,7 +123,12 @@ function ShopHome() {
                     </Row>
                 </Col>
             </Row>
+
+            {/* Requested For Call */}
             <Row style={{ margin: "auto" }} className='pt-5'>
+                <div>
+                    <h5 className='text-center'>Requested for call</h5>
+                </div>
                 <Col lg={3} className='border p-3'>
                     <div className='d-flex justify-content-between'>
                         <p>Name</p>
@@ -216,6 +222,8 @@ function ShopHome() {
                     <div className='text-center'><a href='tel:917356288705'><button className='call-btn'>Call</button></a></div>
                 </Col>
             </Row>
+
+            {/* Service Ongoing */}
             <Row style={{ margin: "auto" }} className='mt-5'>
                 <h5 className='text-center'>Service Ongoing</h5>
                 <Col lg={3}>
@@ -375,6 +383,8 @@ function ShopHome() {
                     </div>
                 </Col>
             </Row>
+
+            {/* Complaint Details Modal */}
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Complaint Details</Modal.Title>
@@ -387,6 +397,8 @@ function ShopHome() {
                     <button className='modal-button-confirm'>Confirm</button>
                 </Modal.Footer>
             </Modal>
+            
+            {/* View Pending Service */}
             <Modal show={bookShow} onHide={handleBookClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Booking Details</Modal.Title>
@@ -404,13 +416,17 @@ function ShopHome() {
                             </div>
                             <div className='mt-2'>
                                 <p style={{ marginBottom: "-1px" }}>Date</p>
-                                <input style={{ border: "none", borderBottom: '1px solid white', backgroundColor: "transparent", color: "white", outline: "none" }} type="date" value={'Nafil Husn M'} />
+                                <input style={{ border: "none", borderBottom: '1px solid white', backgroundColor: "transparent", color: "white", outline: "none" }} type="date" value={"2024-01-01"} />
+                            </div>
+                            <div className='mt-2'>
+                                <p style={{ marginBottom: "-1px" }}>Registration Number</p>
+                                <input style={{ border: "none", borderBottom: '1px solid white', backgroundColor: "transparent", color: "white", outline: "none" }} type="text" value={'KL53L7580'} />
                             </div>
                             <div className='mt-2'>
                                 <p style={{ marginBottom: "-1px" }}>Message</p>
-                                <textarea style={{  backgroundColor: "transparent",   }} rows='6' type="date" value={''} />
+                                <textarea style={{  backgroundColor: "transparent",   }} rows='4' type="date" value={''} />
                             </div>
-
+                            
                         </Col>
                         <Col lg={6}>
                             <div>

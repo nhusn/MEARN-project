@@ -7,7 +7,7 @@ import Footer from '../Components/Footer'
 function Contact() {
 
     const date = (new Date()).toLocaleDateString('sv-SE')
-    console.log(date);
+    // console.log(date);
 
     return (
         <div style={{ paddingTop: "100px" }} className='contact-page'>

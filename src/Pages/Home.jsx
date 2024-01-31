@@ -67,29 +67,29 @@ function Home() {
                 <Row style={{margin:"auto"}} className='p-5'>
                     <Col lg={4} md={4} sm={6} xs={12} className='service-details'>
                         <div className='horiz-line'></div>
-                        <i style={{ fontSize: "50px" }} class="fa-solid fa-screwdriver-wrench"></i>
+                        <i style={{ fontSize: "50px" }} className="fa-solid fa-screwdriver-wrench"></i>
                         <h4 className='mt-5'>BRAKE REPAIR</h4>
                         <p>You get used to your brakes. Brake pads and rotors wear out from the immense friction and heat they encounter. Air gets into brake lines.…</p>
                         <div className='sliding-button'>
-                            <button><i style={{ fontSize: "10px",color:"white" }} class="fa-solid fa-angle-right"></i></button> <p className='mt-3'>DETAILS SERVICE</p>
+                            <button><i style={{ fontSize: "10px",color:"white" }} className="fa-solid fa-angle-right"></i></button> <p className='mt-3'>DETAILS SERVICE</p>
                         </div>
                     </Col>
                     <Col lg={4} md={4} sm={6} xs={12} className='service-details'>
                         <div className='horiz-line'></div>
-                        <i style={{ fontSize: "50px" }}  class="fa-solid fa-toolbox"></i>
+                        <i style={{ fontSize: "50px" }}  className="fa-solid fa-toolbox"></i>
                         <h4 className='mt-5'>ENGINE REPAIR</h4>
                         <p>The check engine usually indicates a need to replace one or more parts of your engine or exhaust system: the oxygen sensor, catalytic converter, mass…</p>
                         <div className='sliding-button'>
-                            <button><i style={{ fontSize: "10px",color:"white" }} class="fa-solid fa-angle-right"></i></button> <p className='mt-3'>DETAILS SERVICE</p>
+                            <button><i style={{ fontSize: "10px",color:"white" }} className="fa-solid fa-angle-right"></i></button> <p className='mt-3'>DETAILS SERVICE</p>
                         </div>
                     </Col>
                     <Col lg={4} md={4} sm={6} xs={12} className='service-details'>
                         <div className='horiz-line'></div>
-                        <i style={{ fontSize: "50px" }}  class="fa-solid fa-person-biking"></i>
+                        <i style={{ fontSize: "50px" }}  className="fa-solid fa-person-biking"></i>
                         <h4 className='mt-5'>TIRE REPAIR</h4>
                         <p>You need new tires, and you have questions. What type of tire do I really need? What do terms like “all-season” and “all-terrain” really mean?…</p>
                         <div className='sliding-button'>
-                            <button><i style={{ fontSize: "10px",color:"white" }} class="fa-solid fa-angle-right"></i></button>
+                            <button><i style={{ fontSize: "10px",color:"white" }} className="fa-solid fa-angle-right"></i></button>
                             <p className='mt-3'>DETAILS SERVICE</p>
                         </div>
                     </Col>
@@ -98,29 +98,29 @@ function Home() {
                 <Row style={{margin:"auto"}} className='p-5'>
                     <Col lg={4} md={4} sm={6} xs={12} className='service-details'>
                         <div className='horiz-line'></div>
-                        <i style={{ fontSize: "50px" }} class="fa-solid fa-temperature-low"></i>
+                        <i style={{ fontSize: "50px" }} className="fa-solid fa-temperature-low"></i>
                         <h4 className='mt-5'>COOLING SYSTEM</h4>
                         <p>An overheated engine that leaves you stranded on the side of the road is a hassle. But overheating is one of many signs of trouble…</p>
                         <div className='sliding-button'>
-                            <button><i style={{ fontSize: "10px",color:"white" }} class="fa-solid fa-angle-right"></i></button> <p className='mt-3'>DETAILS SERVICE</p>
+                            <button><i style={{ fontSize: "10px",color:"white" }} className="fa-solid fa-angle-right"></i></button> <p className='mt-3'>DETAILS SERVICE</p>
                         </div>
                     </Col>
                     <Col lg={4} md={4} sm={6} xs={12} className='service-details'>
                         <div className='horiz-line'></div>
-                        <i style={{ fontSize: "50px" }} class="fa-solid fa-car-battery"></i>
+                        <i style={{ fontSize: "50px" }} className="fa-solid fa-car-battery"></i>
                         <h4 className='mt-5'>BATTERY REPAIR</h4>
                         <p>Your vehicle just won’t start. You turn on the ignition, and all you get is the telltale clicking noise. Possibly followed by competing pronouncements of…</p>
                         <div className='sliding-button'>
-                            <button><i style={{ fontSize: "10px",color:"white" }} class="fa-solid fa-angle-right"></i></button> <p className='mt-3'>DETAILS SERVICE</p>
+                            <button><i style={{ fontSize: "10px",color:"white" }} className="fa-solid fa-angle-right"></i></button> <p className='mt-3'>DETAILS SERVICE</p>
                         </div>
                     </Col>
                     <Col lg={4} md={4} sm={6} xs={12} className='service-details'>
                         <div className='horiz-line'></div>
-                        <i style={{ fontSize: "50px" }} class="fa-solid fa-drum-steelpan"></i>
+                        <i style={{ fontSize: "50px" }} className="fa-solid fa-drum-steelpan"></i>
                         <h4 className='mt-5'>STEERING REPAIR</h4>
                         <p>Your steering and suspension systems work together to keep your tires on the pavement and your vehicle under control – until a power steering problem…</p>
                         <div className='sliding-button'>
-                            <button><i style={{ fontSize: "10px",color:"white" }} class="fa-solid fa-angle-right"></i></button><p className='mt-3'>DETAILS SERVICE</p>
+                            <button><i style={{ fontSize: "10px",color:"white" }} className="fa-solid fa-angle-right"></i></button><p className='mt-3'>DETAILS SERVICE</p>
                         </div>
                     </Col>
                 </Row>

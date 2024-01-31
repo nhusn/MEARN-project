@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './Package.css'
 import { Link } from 'react-router-dom'
 import Plans from '../Components/Plans'
@@ -6,6 +6,7 @@ import { Col, Row } from 'react-bootstrap'
 import Footer from '../Components/Footer'
 
 function Packages() {
+    
     return (
         <div style={{ paddingTop: "100px" }}>
             <div className='service-banner'>

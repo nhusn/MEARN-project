@@ -1,12 +1,23 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Col, Row } from 'react-bootstrap'
 import Logo from '../Asset/Logo_LenMotors.png'
 import './Header.css';
 import { Link } from 'react-router-dom';
+import { isCustomerLoggedInContext } from '../Context/Contexts';
 
 function Header() {
 
-    const isShop = false
+    const [isShop,setIsShop] = useState(false)
+    const {isCustomerLogged,setIsCustomerLogged} = useContext(isCustomerLoggedInContext)
+
+
+    
+
+    const handleLogout = ()=>{
+        sessionStorage.clear()
+        setIsCustomerLogged(false)
+    }
+
     return (
         <div className='head'>
             <Row>
@@ -32,9 +43,15 @@ function Header() {
                         </div>}
                 </Col>
                 <Col lg={4} md={6} sm={12}>
+                   {
+                    isCustomerLogged?   
+                    <div className='login-butt'>
+                        <Link onClick={handleLogout}><button>LOGOUT</button></Link>
+                    </div>
+                    :
                     <div className='login-butt'>
                         <Link to={'/login'}><button>LOGIN</button></Link>
-                    </div>
+                    </div>}
                 </Col>
             </Row>
         </div>

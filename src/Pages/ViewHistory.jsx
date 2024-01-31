@@ -323,6 +323,12 @@ function ViewHistory() {
           </tr>
         </table>
 
+
+        {/* Total Amount */}
+        <div className='text-center mt-5'>
+            <h5>Net Amount : 10000</h5>
+        </div>
+
         <div className='text-center mt-5'>
           <h5>Get your vehicle serviced at regular intervels</h5>
           <h5>Next due date for service is 19-12-2022</h5>

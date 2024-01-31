@@ -1,9 +1,16 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Col, Row } from 'react-bootstrap'
 import './Plans.css'
 import { Link } from 'react-router-dom'
 
 function Plans() {
+    const [userDetails,setUserDetails]  = useState({})
+    useEffect(()=>{
+        if(sessionStorage.getItem("existingUser")){
+            const user = JSON.parse(sessionStorage.getItem("existingUser"))
+            console.log(user.subscription.personal);
+        }
+    })
     return (
         <>
             <Row style={{margin:"auto"}} className='mt-5 p-5'>
@@ -24,13 +31,13 @@ function Plans() {
                             <hr />
                         </div>
                         <div className='w-100'>
-                            <div className='d-flex justify-content-between service-check'><p>Scheduled servicing</p><i class="fa-solid fa-check"></i> </div>
-                            <div className='d-flex justify-content-between service-check'><p>Oil checking</p><i class="fa-solid fa-check"></i> </div>
-                            <div className='d-flex justify-content-between service-check'><p>Roadside Assistance</p><i class="fa-solid fa-check"></i> </div>
-                            <div className='d-flex justify-content-between'><p>All routine maintenance</p><i class="fa-solid fa-xmark"></i> </div>
-                            <div className='d-flex justify-content-between'><p>24/7 customer service</p><i class="fa-solid fa-xmark"></i> </div>
+                            <div className='d-flex justify-content-between service-check'><p>Scheduled servicing</p><i className="fa-solid fa-check"></i> </div>
+                            <div className='d-flex justify-content-between service-check'><p>Oil checking</p><i className="fa-solid fa-check"></i> </div>
+                            <div className='d-flex justify-content-between service-check'><p>Roadside Assistance</p><i className="fa-solid fa-check"></i> </div>
+                            <div className='d-flex justify-content-between'><p>All routine maintenance</p><i className="fa-solid fa-xmark"></i> </div>
+                            <div className='d-flex justify-content-between'><p>24/7 customer service</p><i className="fa-solid fa-xmark"></i> </div>
                         </div>
-                        <Link style={{width:"100%"}} to={'/login'}><button>SUBSCRIBE</button></Link>
+                        <Link style={{width:"100%"}} to={'/login'}><button  disabled>SUBSCRIBE</button></Link>
                     </div>
                 </Col>
 
@@ -43,11 +50,11 @@ function Plans() {
                             <hr />
                         </div>
                         <div className='w-100'>
-                            <div className='d-flex justify-content-between service-check'><p>Scheduled servicing</p><i class="fa-solid fa-check"></i> </div>
-                            <div className='d-flex justify-content-between service-check'><p>Oil checking</p><i class="fa-solid fa-check"></i> </div>
-                            <div className='d-flex justify-content-between service-check'><p>Roadside Assistance</p><i class="fa-solid fa-check"></i> </div>
-                            <div className='d-flex justify-content-between service-check'><p>All routine maintenance</p><i class="fa-solid fa-check"></i> </div>
-                            <div className='d-flex justify-content-between service-check'><p>24/7 customer service</p><i class="fa-solid fa-check"></i> </div>
+                            <div className='d-flex justify-content-between service-check'><p>Scheduled servicing</p><i className="fa-solid fa-check"></i> </div>
+                            <div className='d-flex justify-content-between service-check'><p>Oil checking</p><i className="fa-solid fa-check"></i> </div>
+                            <div className='d-flex justify-content-between service-check'><p>Roadside Assistance</p><i className="fa-solid fa-check"></i> </div>
+                            <div className='d-flex justify-content-between service-check'><p>All routine maintenance</p><i className="fa-solid fa-check"></i> </div>
+                            <div className='d-flex justify-content-between service-check'><p>24/7 customer service</p><i className="fa-solid fa-check"></i> </div>
                         </div>
                         <Link style={{width:"100%"}} to={'/login'}><button>SUBSCRIBE</button></Link>
                     </div>
