@@ -1,11 +1,11 @@
-import React,{ useState } from 'react'
+import React,{ useEffect, useState } from 'react'
 import { Col, Row } from 'react-bootstrap'
 import './Dashboard.css'
 import { Link } from 'react-router-dom'
 import Modal from 'react-bootstrap/Modal';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { RequestService } from '../Services/allAPI';
+import { RequestServiceAPI } from '../Services/allAPI';
 
 
 function Dashboard() {
@@ -77,22 +77,30 @@ const error = (message) => {
 
   const handleBookService = async (e)=>{
     e.preventDefault()
+
+
     const {company,model,regNo,ModOfService,vehiclePickup,address} = bookService
     if(!company || !model || !regNo || !ModOfService || !vehiclePickup || !address){
       info("Please fill the form")
     }else{
-      const userDetails =  JSON.parse(sessionStorage.getItem('existingUser'))
-      console.log(userDetails);
-      const date = (new Date()).toLocaleDateString('sv-SE')
-      setBookService({...bookService, name:userDetails.name, email:userDetails.email, number:userDetails.mobno, date})
-
-      const result = await RequestService(bookService)
+      const result = await RequestServiceAPI(bookService)
       if(result.status==200){
         success(result.data)
+      }else{
+        info("Please after some times")
       }
-      console.log(result);
+      // console.log(result);
     }
   }
+
+  useEffect(()=>{
+    if(bookService.name===""){
+    const userDetails =  JSON.parse(sessionStorage.getItem('existingUser'))
+    const date = (new Date()).toLocaleDateString('sv-SE')
+    setBookService({...bookService, name:userDetails.name, email:userDetails.email, number:userDetails.mobno, date})
+    }
+    
+  },[])
   // console.log(bookService);
   return (
     <div>
@@ -144,8 +152,8 @@ const error = (message) => {
           <h5 className='mt-4'>Vehicle Pickup</h5>
           <div className='vehicle-info mt-3'>
             <select name="pickup" id="modOfService" value={bookService.vehiclePickup} onChange={(e)=>setBookService({...bookService, vehiclePickup:e.target.value})} required>
-              <option value="false">No</option>
-              <option value="true">Yes</option>
+              <option value="No">No</option>
+              <option value="Yes">Yes</option>
             </select>
             <div className="veh-form-underline"></div>
           </div>
@@ -174,22 +182,26 @@ const error = (message) => {
               <h5>Service History</h5>
             </div>
             <table id='service-history-table'>
-              <tr>
-                <th className='ps-2'>#</th>
-                <th className='ps-2'>Date</th>
-                <th className='ps-2'>Title</th>
-                <th className='ps-2'>Vehicle</th>
-                <th className='ps-2'>Amount</th>
-                <th className='ps-'>View</th>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>21/08/2023</td>
-                <td>Clutch Replacement</td>
-                <td>Swift Desire</td>
-                <td>12000</td>
-                <td><Link style={{ textDecoration: "none", color: "white" }} to={'/view/:id'}><i className="fa-solid fa-eye ps-"></i></Link></td>
-              </tr>
+              <thead>
+                <tr>
+                  <th className='ps-2'>#</th>
+                  <th className='ps-2'>Date</th>
+                  <th className='ps-2'>Title</th>
+                  <th className='ps-2'>Vehicle</th>
+                  <th className='ps-2'>Amount</th>
+                  <th className='ps-'>View</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>21/08/2023</td>
+                  <td>Clutch Replacement</td>
+                  <td>Swift Desire</td>
+                  <td>12000</td>
+                  <td><Link style={{ textDecoration: "none", color: "white" }} to={'/view/:id'}><i className="fa-solid fa-eye ps-"></i></Link></td>
+                </tr>
+              </tbody>
             </table>
           </div>
         </Col>

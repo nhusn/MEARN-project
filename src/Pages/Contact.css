@@ -53,6 +53,11 @@
     z-index: 1;
     color: white;
 }
+.forms-col input::-webkit-outer-spin-button,
+.forms-col input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 .forms-col input[type="date"]::-webkit-calendar-picker-indicator {
     color: rgba(0, 0, 0, 0);
     opacity: 0;
@@ -95,8 +100,12 @@
 .forms-col input:valid ~ .form-underline:before{
     transform: scaleX(1);
 }
+.forms-col textarea:focus ~ .form-underline:before,
+.forms-col textarea:valid ~ .form-underline::before{
+    transform: scaleX(1);
+}
 
-.contact-page button {
+.callrequestbutton button {
     margin-top: 33px;
     /* margin-left: 5%; */
     width: 230px;
@@ -109,7 +118,7 @@
     transition: clip-path .2s linear;
 }
 
-.contact-page button:hover {
+.callrequestbutton button:hover {
     clip-path: polygon(0% 0, 100% 0%, 100% 60%, 100% 100%, 0% 100%, 0 40%);
     background-color: black;
 }

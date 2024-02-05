@@ -2,20 +2,22 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Col, Row } from 'react-bootstrap'
 import Logo from '../Asset/Logo_LenMotors.png'
 import './Header.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { isCustomerLoggedInContext } from '../Context/Contexts';
+import {  isShopLoggedContext  } from '../Context/Contexts'
 
 function Header() {
 
-    const [isShop,setIsShop] = useState(false)
     const {isCustomerLogged,setIsCustomerLogged} = useContext(isCustomerLoggedInContext)
+    const {isShopLogged,setIsShopLogged} = useContext(isShopLoggedContext)
+    const navigate = useNavigate()
 
-
-    
-
-    const handleLogout = ()=>{
+    const handleLogout = (e)=>{
+        e.preventDefault()
+        navigate('/login')
         sessionStorage.clear()
         setIsCustomerLogged(false)
+        setIsShopLogged(false)
     }
 
     return (
@@ -26,7 +28,7 @@ function Header() {
                 </Col>
 
                 <Col lg={4} md={6} sm={12}>
-                    {isShop ?
+                    {isShopLogged ?
                         <div style={{gap:"20px"}} className='d-flex justify-content-center mt-5'>
                             {/* <Link style={{ textDecoration: "none" }} to={'/shop'}><p className='navi'>HOME</p></Link>
                             <Link style={{ textDecoration: "none" }} to={'/billing'}><p className='navi'>BILL</p></Link> */}
@@ -44,9 +46,9 @@ function Header() {
                 </Col>
                 <Col lg={4} md={6} sm={12}>
                    {
-                    isCustomerLogged?   
+                    isCustomerLogged || isShopLogged?   
                     <div className='login-butt'>
-                        <Link onClick={handleLogout}><button>LOGOUT</button></Link>
+                        <Link onClick={(e)=>handleLogout(e)}><button>LOGOUT</button></Link>
                     </div>
                     :
                     <div className='login-butt'>
