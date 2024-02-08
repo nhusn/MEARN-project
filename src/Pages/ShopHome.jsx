@@ -4,7 +4,7 @@ import './ShopHome.css'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { Link } from 'react-router-dom';
-import { addOngoingAPI, allPendingServiceAPI, getAllCallRequestAPI, removeCallRequestAPI, removePendingServiceAPI } from '../Services/allAPI';
+import { addOngoingAPI, allPendingServiceAPI, getAllCallRequestAPI, getAllOngoingServiceAPI, removeCallRequestAPI, removePendingServiceAPI } from '../Services/allAPI';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -76,6 +76,7 @@ function ShopHome() {
     const [modalDetails, setModalDetails] = useState({})
     const [allPendingService, setAllPendingServices] = useState([])
     const [allCallRequest, setAllCallRequest] = useState([])
+    const [allOngoingServices, setAllOngoingServices] = useState([])
 
     const getallPendingService = async () => {
         const result = await allPendingServiceAPI()
@@ -95,51 +96,73 @@ function ShopHome() {
         }
     }
 
-    const removePendingService = async (e,id)=>{
+    const getAllOngoingService = async () => {
+        const result = await getAllOngoingServiceAPI()
+        if (result.status === 200) {
+            setAllOngoingServices(result.data)
+        } else {
+            console.log(result);
+        }
+    }
+
+    const removePendingService = async (e, id) => {
         e.preventDefault()
         const result = await removePendingServiceAPI(id)
-        if (result.status === 200){
+        if (result.status === 200) {
             // const deletedService = result.data
             // setAllPendingServices(allPendingService.filter(item=>(
             //     item._d != deletedService._id
             // )))
             getallPendingService()
-        }else{
+        } else {
             console.log(result);
         }
     }
     // console.log(allPendingService);
     // console.log(allCallRequest);
 
-    useEffect(() => {
-        getallPendingService()
-        getAllCallRequest()
-    }, [])
 
-    const handleOngoing = async (e,item)=>{
+
+    const handleOngoing = async (e, item) => {
         e.preventDefault()
-        const {ModOfService,address,regNo,number,email,name} = item
+        const { ModOfService, address, regNo, number, email, name } = item
         const date = (new Date()).toLocaleDateString('sv-SE')
-        const details = {ModOfService,address,date,regNo,number,email,name}
+        const details = { ModOfService, address, date, regNo, number, email, name }
         const result = await addOngoingAPI(details)
-        if(result.status===200){
-            removePendingService(e,item._id)
-        }else{
+        if (result.status === 200) {
+            removePendingService(e, item._id)
+        } else {
             error(result.message)
         }
         // console.log(result);
     }
 
-    const handleRemoveCallRequest = async (e,id) =>{
+    const handleRemoveCallRequest = async (e, id) => {
         e.preventDefault()
         const result = await removeCallRequestAPI(id)
-        if(result.status===200){
+        if (result.status === 200) {
             success("removed")
             getAllCallRequest()
-        }else{
+        } else {
             error("Server error try after some times")
         }
     }
+
+    const handleServiceOngoing = async (e,value) => {
+        if(!value){
+            console.log(value);
+        }else{
+            info("Already completed")
+        }
+    }
+
+    useEffect(() => {
+        getallPendingService()
+        getAllCallRequest()
+        getAllOngoingService()
+    }, [])
+
+    // console.log(allOngoingServices);
 
     return (
         <div style={{ marginTop: "120px" }}>
@@ -179,8 +202,8 @@ function ShopHome() {
                                 <div className='d-flex justify-content-between flex-wrap'>
                                     <button className='view-button' onClick={() => handleBookShow(item)}>View</button>
                                     <a href={`tel:${item.number}`}><button className='call-btn'>Call</button></a>
-                                    <button className='confirm-btn' onClick={(e)=>handleOngoing(e,item)}>Confirm</button>
-                                    <button className='cancel-btn' onClick={(e)=>removePendingService(e,item._id)}>Cancel</button>
+                                    <button className='confirm-btn' onClick={(e) => handleOngoing(e, item)}>Confirm</button>
+                                    <button className='cancel-btn' onClick={(e) => removePendingService(e, item._id)}>Cancel</button>
                                 </div>
                             </Row>
                         </Col>
@@ -261,9 +284,9 @@ function ShopHome() {
             {/* Requested For Call */}
             <Row style={{ margin: "auto" }} className='pt-5'>
                 <div>
-                    {!allCallRequest.length===0 && <h5 className='text-center'>Requested for call</h5>}
+                    {!allCallRequest.length == 0 && <h5 className='text-center'>Requested for call</h5>}
                 </div>
-                {allCallRequest && allCallRequest.map((item,index) => (
+                {allCallRequest && allCallRequest.map((item, index) => (
                     <Col lg={3} key={index} className='border p-3'>
                         <div className='d-flex justify-content-between'>
                             <p>Name</p>
@@ -287,11 +310,11 @@ function ShopHome() {
                         </div>
                         <div className='d-flex justify-content-between'>
                             <a href={`tel:${item.number}`}><button className='call-btn'>Call</button></a>
-                            <button className='cancel-btn' onClick={(e)=>handleRemoveCallRequest(e,item._id)}>Cancel</button>
+                            <button className='cancel-btn' onClick={(e) => handleRemoveCallRequest(e, item._id)}>Cancel</button>
                         </div>
-                        
+
                     </Col>
-                    
+
                 ))
 
                 }
@@ -300,162 +323,50 @@ function ShopHome() {
             {/* Service Ongoing */}
             <Row style={{ margin: "auto" }} className='mt-5'>
                 <h5 className='text-center'>Service Ongoing</h5>
-                <Col lg={3}>
-                    <div className='shop-ong-service'>
-                        <div className="d-flex justify-content-between aling-items-center">
-                            <h5>KL53L7580</h5>
-                            <a href='tel:917356288705'><button className='call-btn-ong'>Call</button></a>
-                        </div>
-                        <hr />
-                        <div className='d-flex justify-content-between'>
-                            <h6>Book Service</h6>
-                            <i style={{ color: "#ff5e00" }} className="fa-solid fa-circle-check"></i>
-                        </div>
-                        <i className="fa-solid fa-arrow-down-long"></i>
-                        <div className='d-flex justify-content-between'>
-                            <h6>Vehicle Pickup</h6>
-                            <i style={{ color: "#ff5e00" }} className="fa-solid fa-circle-check"></i>
-                        </div>
-                        <i className="fa-solid fa-arrow-down-long"></i>
-                        <div className='d-flex justify-content-between'>
-                            <h6>Inspection</h6>
-                            <i className="fa-regular fa-circle"></i>
-                        </div>
-                        <i className="fa-solid fa-arrow-down-long"></i>
-                        <div className='d-flex justify-content-between'>
-                            <h6 style={{ color: 'blue', textDecoration: "underline", cursor: "pointer" }} onClick={handleShow}>Complaint Details</h6>
-                            <i className="fa-regular fa-circle"></i>
-                        </div>
-                        <i className="fa-solid fa-arrow-down-long"></i>
-                        <div className='d-flex justify-content-between'>
-                            <h6>Service Done</h6>
-                            <i className="fa-regular fa-circle"></i>
-                        </div>
-                        <i className="fa-solid fa-arrow-down-long"></i>
-                        <div className='d-flex justify-content-between'>
-                            <h6>Delivered</h6>
-                            <i className="fa-regular fa-circle"></i>
-                        </div>
-                        <div className='text-center'><Link to={'/billing'}><button className='create-btn'>Create Bill</button></Link></div>
-                    </div>
-                </Col>
-                <Col lg={3}>
-                    <div className='shop-ong-service'>
-                        <div className="d-flex justify-content-between aling-items-center">
-                            <h5>KL53L7580</h5>
-                            <a href='tel:917356288705'><button className='call-btn-ong'>Call</button></a>
-                        </div>
-                        <hr />
-                        <div className='d-flex justify-content-between'>
-                            <h6>Book Service</h6>
-                            <i style={{ color: "#ff5e00" }} className="fa-solid fa-circle-check"></i>
-                        </div>
-                        <i className="fa-solid fa-arrow-down-long"></i>
-                        <div className='d-flex justify-content-between'>
-                            <h6>Vehicle Pickup</h6>
-                            <i style={{ color: "#ff5e00" }} className="fa-solid fa-circle-check"></i>
-                        </div>
-                        <i className="fa-solid fa-arrow-down-long"></i>
-                        <div className='d-flex justify-content-between'>
-                            <h6>Inspection</h6>
-                            <i className="fa-regular fa-circle"></i>
-                        </div>
-                        <i className="fa-solid fa-arrow-down-long"></i>
-                        <div className='d-flex justify-content-between'>
-                            <h6 style={{ color: 'blue', textDecoration: "underline", cursor: "pointer" }} onClick={handleShow}>Complaint Details</h6>
-                            <i className="fa-regular fa-circle"></i>
-                        </div>
-                        <i className="fa-solid fa-arrow-down-long"></i>
-                        <div className='d-flex justify-content-between'>
-                            <h6>Service Done</h6>
-                            <i className="fa-regular fa-circle"></i>
-                        </div>
-                        <i className="fa-solid fa-arrow-down-long"></i>
-                        <div className='d-flex justify-content-between'>
-                            <h6>Delivered</h6>
-                            <i className="fa-regular fa-circle"></i>
-                        </div>
-                        <div className='text-center'><Link to={'/billing'}><button className='create-btn'>Create Bill</button></Link></div>
-                    </div>
-                </Col>
-                <Col lg={3}>
-                    <div className='shop-ong-service'>
-                        <div className="d-flex justify-content-between aling-items-center">
-                            <h5>KL53L7580</h5>
-                            <a href='tel:917356288705'><button className='call-btn-ong'>Call</button></a>
-                        </div>
-                        <hr />
-                        <div className='d-flex justify-content-between'>
-                            <h6>Book Service</h6>
-                            <i style={{ color: "#ff5e00" }} className="fa-solid fa-circle-check"></i>
-                        </div>
-                        <i className="fa-solid fa-arrow-down-long"></i>
-                        <div className='d-flex justify-content-between'>
-                            <h6>Vehicle Pickup</h6>
-                            <i style={{ color: "#ff5e00" }} className="fa-solid fa-circle-check"></i>
-                        </div>
-                        <i className="fa-solid fa-arrow-down-long"></i>
-                        <div className='d-flex justify-content-between'>
-                            <h6>Inspection</h6>
-                            <i className="fa-regular fa-circle"></i>
-                        </div>
-                        <i className="fa-solid fa-arrow-down-long"></i>
-                        <div className='d-flex justify-content-between'>
-                            <h6 style={{ color: 'blue', textDecoration: "underline", cursor: "pointer" }} onClick={handleShow}>Complaint Details</h6>
-                            <i className="fa-regular fa-circle"></i>
-                        </div>
-                        <i className="fa-solid fa-arrow-down-long"></i>
-                        <div className='d-flex justify-content-between'>
-                            <h6>Service Done</h6>
-                            <i className="fa-regular fa-circle"></i>
-                        </div>
-                        <i className="fa-solid fa-arrow-down-long"></i>
-                        <div className='d-flex justify-content-between'>
-                            <h6>Delivered</h6>
-                            <i className="fa-regular fa-circle"></i>
-                        </div>
-                        <div className='text-center'><Link to={'/billing'}><button className='create-btn'>Create Bill</button></Link></div>
-                    </div>
-                </Col>
-                <Col lg={3}>
-                    <div className='shop-ong-service'>
-                        <div className="d-flex justify-content-between aling-items-center">
-                            <h5>KL53L7580</h5>
-                            <a href='tel:917356288705'><button className='call-btn-ong'>Call</button></a>
-                        </div>
-                        <hr />
-                        <div className='d-flex justify-content-between'>
-                            <h6>Book Service</h6>
-                            <i style={{ color: "#ff5e00" }} className="fa-solid fa-circle-check"></i>
-                        </div>
-                        <i className="fa-solid fa-arrow-down-long"></i>
-                        <div className='d-flex justify-content-between'>
-                            <h6>Vehicle Pickup</h6>
-                            <i style={{ color: "#ff5e00" }} className="fa-solid fa-circle-check"></i>
-                        </div>
-                        <i className="fa-solid fa-arrow-down-long"></i>
-                        <div className='d-flex justify-content-between'>
-                            <h6>Inspection</h6>
-                            <i className="fa-regular fa-circle"></i>
-                        </div>
-                        <i className="fa-solid fa-arrow-down-long"></i>
-                        <div className='d-flex justify-content-between'>
-                            <h6 style={{ color: 'blue', textDecoration: "underline", cursor: "pointer" }} onClick={handleShow}>Complaint Details</h6>
-                            <i className="fa-regular fa-circle"></i>
-                        </div>
-                        <i className="fa-solid fa-arrow-down-long"></i>
-                        <div className='d-flex justify-content-between'>
-                            <h6>Service Done</h6>
-                            <i className="fa-regular fa-circle"></i>
-                        </div>
-                        <i className="fa-solid fa-arrow-down-long"></i>
-                        <div className='d-flex justify-content-between'>
-                            <h6>Delivered</h6>
-                            <i className="fa-regular fa-circle"></i>
-                        </div>
-                        <div className='text-center'><Link to={'/billing'}><button className='create-btn'>Create Bill</button></Link></div>
-                    </div>
-                </Col>
+                {
+                    allOngoingServices && allOngoingServices.map((item, index) => (
+                        <Col key={index} lg={3}>
+                            <div className='shop-ong-service'>
+                                <div className="d-flex justify-content-between aling-items-center">
+                                    <h5>{item.regNo}</h5>
+                                    <a href={`tel:${item.number}`}><button className='call-btn-ong'>Call</button></a>
+                                </div>
+                                <hr />
+                                <div className='d-flex justify-content-between'>
+                                    <h6>Book Service</h6>
+                                    <i style={item.bookService ?{ color: "#ff5e00" }:{cursor:"pointer"}} className={item.bookService? "fa-solid fa-circle-check":"fa-regular fa-circle"} onClick={(e)=>handleServiceOngoing(e,item.bookService,item._id)}></i>
+                                </div>
+                                <i className="fa-solid fa-arrow-down-long"></i>
+                                <div className='d-flex justify-content-between'>
+                                    <h6>Vehicle Pickup</h6>
+                                    <i style={item.vehiclePickup ?{ color: "#ff5e00" }:{cursor:"pointer"}} className={item.vehiclePickup? "fa-solid fa-circle-check":"fa-regular fa-circle"}  onClick={(e)=>handleServiceOngoing(e,item.vehiclePickup,item._id)}></i>
+                                </div>
+                                <i className="fa-solid fa-arrow-down-long"></i>
+                                <div className='d-flex justify-content-between'>
+                                    <h6>Inspection</h6>
+                                    <i style={item.inspection ?{ color: "#ff5e00" }:{cursor:"pointer"}} className={item.inspection? "fa-solid fa-circle-check":"fa-regular fa-circle"} onClick={(e)=>handleServiceOngoing(e,item.inspection,item._id)}></i>
+                                </div>
+                                <i className="fa-solid fa-arrow-down-long"></i>
+                                <div className='d-flex justify-content-between'>
+                                    <h6 style={{ color: 'blue', textDecoration: "underline", cursor: "pointer" }} onClick={handleShow}>Complaint Details</h6>
+                                    <i style={item.complaint ?{ color: "#ff5e00" }:{cursor:"pointer"}} className={item.complaint? "fa-solid fa-circle-check":"fa-regular fa-circle"} onClick={(e)=>handleServiceOngoing(e,item.complaint,item._id)}></i>
+                                </div>
+                                <i className="fa-solid fa-arrow-down-long"></i>
+                                <div className='d-flex justify-content-between'>
+                                    <h6>Service Done</h6>
+                                    <i style={item.serviceDone ?{ color: "#ff5e00" }:{cursor:"pointer"}} className={item.serviceDone? "fa-solid fa-circle-check":"fa-regular fa-circle"}  onClick={(e)=>handleServiceOngoing(e,item.serviceDone,item._id)}></i>
+                                </div>
+                                <i className="fa-solid fa-arrow-down-long"></i>
+                                <div className='d-flex justify-content-between'>
+                                    <h6>Delivered</h6>
+                                    <i style={item.Delivered ?{ color: "#ff5e00" }:{cursor:"pointer"}} className={item.Delivered? "fa-solid fa-circle-check":"fa-regular fa-circle"} onClick={(e)=>handleServiceOngoing(e,item.Delivered,item._id)}></i>
+                                </div>
+                                <div className='text-center'><Link to={'/billing'}><button className='create-btn'>Create Bill</button></Link></div>
+                            </div>
+                        </Col>
+                    ))
+
+                }
             </Row>
 
             {/* Complaint Details Modal */}
