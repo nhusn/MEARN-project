@@ -56,3 +56,7 @@ export const removeCallRequestAPI = async(id)=>{
 export const getAllOngoingServiceAPI = async () => {
     return await commonAPI("GET",`${server_URL}/services/ongoing/all`,"")
 }
+
+export const updateOngoingServiceAPI = async (id,value) => {
+    return await commonAPI("POST",`${server_URL}/services/ongoing/update`,{id,value})
+}

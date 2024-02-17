@@ -70,7 +70,7 @@ function ShopBill() {
   const handleShow = () => setShow(true);
 
 
-  const [history, setHistory] = useState([])
+  const [allHistory, setAllHistory] = useState([])
 
   const [localHistory, setLocalHistory] = useState({
     labourPartsCode: "",
@@ -83,7 +83,7 @@ function ShopBill() {
   })
 
   const handleDeleteHistory = (index) => {
-    setHistory(history.filter((his, idx) => idx != index))
+    setAllHistory(allHistory.filter((his, idx) => idx != index))
     error("Deleted Succesfully")
   }
   const handleAddHistory = () => {
@@ -91,7 +91,7 @@ function ShopBill() {
     if (!labourPartsCode || !descLabourParts || !billingType || qty<=0 || !uom || rate<=0) {
       warning("Please Fill the form correctly")
     } else {
-      setHistory([...history, localHistory])
+      setAllHistory([...allHistory, localHistory])
       handleClose()
       success("Added Succesfully")
     }
@@ -128,7 +128,7 @@ function ShopBill() {
     setEditModalShow(true)
   }
   const handleEditHistory = () => {
-    setHistory(history.map((curentRow, index) => {
+    setAllHistory(allHistory.map((curentRow, index) => {
       if (index != editHistoryIndex) {
         return curentRow
       } else {
@@ -320,7 +320,7 @@ function ShopBill() {
           </thead>
           <tbody>
             {
-              history && history?.map((hist, index) => (
+              allHistory && allHistory?.map((hist, index) => (
                 <tr key={index}>
                   <td>{index + 1}</td>
                   <td>{hist.labourPartsCode}</td>
@@ -398,6 +398,9 @@ function ShopBill() {
           <button className='modal-button-confirm' onClick={handleAddHistory}>Confirm</button>
         </Modal.Footer>
       </Modal>
+
+
+
       <Modal show={editModalshow} onHide={handleEditModalClose}>
         <Modal.Header closeButton>
           <Modal.Title>Enter Details</Modal.Title>
@@ -407,15 +410,15 @@ function ShopBill() {
             <div className=''>
               <div className=''>
                 <p style={{ marginBottom: "-1px" }}>Part/Labour Code</p>
-                <input style={{ border: "0px", borderBottom: '1px solid white', backgroundColor: "transparent", color: "white", outline: "none" }} type="text" value={edithistory.LabourPartsCode} onChange={e => setEditHistory({ ...edithistory, LabourPartsCode: e.target.value })} />
+                <input style={{ border: "0px", borderBottom: '1px solid white', backgroundColor: "transparent", color: "white", outline: "none" }} type="text" value={edithistory.labourPartsCode} onChange={e => setEditHistory({ ...edithistory, labourPartsCode: e.target.value })} />
               </div>
               <div className='mt-3'>
                 <p style={{ marginBottom: "-1px" }}>Desc. of Part/ Labour</p>
-                <input style={{ border: "0px", borderBottom: '1px solid white', backgroundColor: "transparent", color: "white", outline: "none" }} type="text" value={edithistory.DescLabourParts} onChange={e => setEditHistory({ ...edithistory, DescLabourParts: e.target.value })} />
+                <input style={{ border: "0px", borderBottom: '1px solid white', backgroundColor: "transparent", color: "white", outline: "none" }} type="text" value={edithistory.descLabourParts} onChange={e => setEditHistory({ ...edithistory, descLabourParts: e.target.value })} />
               </div>
               <div className='mt-3'>
                 <p style={{ marginBottom: "-1px" }}>Billing Type</p>
-                <select className='selection-input' name="modOfPayment" id="modOfPayment" value={edithistory.BillingType} onChange={e => setEditHistory({ ...edithistory, BillingType: e.target.value })} required>
+                <select className='selection-input' name="modOfPayment" id="modOfPayment" value={edithistory.billingType} onChange={e => setEditHistory({ ...edithistory, billingType: e.target.value })} required>
                   <option value="">Select</option>
                   <option value="Paid">Paid</option>
                   <option value="Unpaid">Unpaid</option>
@@ -423,17 +426,17 @@ function ShopBill() {
               </div>
               <div className='mt-3'>
                 <p style={{ marginBottom: "-1px" }}>Discount</p>
-                <input className='number-without-arrows' style={{ border: "0px", borderBottom: '1px solid white', backgroundColor: "transparent", color: "white", outline: "none" }} type="number" min={0} value={edithistory.Discount} onChange={e => setEditHistory({ ...edithistory, Discount: e.target.value })} />
+                <input className='number-without-arrows' style={{ border: "0px", borderBottom: '1px solid white', backgroundColor: "transparent", color: "white", outline: "none" }} type="number" min={0} value={edithistory.discount} onChange={e => setEditHistory({ ...edithistory, discount: e.target.value })} />
               </div>
             </div>
             <div>
               <div>
                 <p style={{ marginBottom: "-1px" }}>Quantity</p>
-                <input style={{ border: "0px", borderBottom: '1px solid white', backgroundColor: "transparent", color: "white", outline: "none" }} type="number" min={1} value={edithistory.Qty} onChange={e => setEditHistory({ ...edithistory, Qty: e.target.value })} />
+                <input style={{ border: "0px", borderBottom: '1px solid white', backgroundColor: "transparent", color: "white", outline: "none" }} type="number" min={1} value={edithistory.qty} onChange={e => setEditHistory({ ...edithistory, qty: e.target.value })} />
               </div>
               <div className='mt-3'>
                 <p style={{ marginBottom: "-1px" }}>UOM</p>
-                <select className='selection-input' name="modOfPayment" id="modOfPayment" required value={edithistory.UOM} onChange={e => setEditHistory({ ...edithistory, UOM: e.target.value })}>
+                <select className='selection-input' name="modOfPayment" id="modOfPayment" required value={edithistory.uom} onChange={e => setEditHistory({ ...edithistory, uom: e.target.value })}>
                   <option value="">Select</option>
                   <option value="Each">Each</option>
                   <option value="Liter">Liter</option>
@@ -442,7 +445,7 @@ function ShopBill() {
               </div>
               <div className='mt-3'>
                 <p style={{ marginBottom: "-1px" }}>Rate</p>
-                <input className='number-without-arrows' style={{ border: "0px", borderBottom: '1px solid white', backgroundColor: "transparent", color: "white", outline: "none" }} type="number" min={0} value={edithistory.Rate} onChange={e => setEditHistory({ ...edithistory, Rate: e.target.value })} />
+                <input className='number-without-arrows' style={{ border: "0px", borderBottom: '1px solid white', backgroundColor: "transparent", color: "white", outline: "none" }} type="number" min={0} value={edithistory.rate} onChange={e => setEditHistory({ ...edithistory, rate: e.target.value })} />
               </div>
             </div>
           </form>

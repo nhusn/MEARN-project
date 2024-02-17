@@ -1,4 +1,4 @@
-import React,{ useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Col, Row } from 'react-bootstrap'
 import './Dashboard.css'
 import { Link } from 'react-router-dom'
@@ -11,96 +11,109 @@ import { RequestServiceAPI } from '../Services/allAPI';
 function Dashboard() {
   const info = (message) => {
     toast.info(`${message}`, {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
     })
-}
-const warning = (message) => {
+  }
+  const warning = (message) => {
     toast.warn(message, {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
     });
-}
-const success = (message) => {
+  }
+  const success = (message) => {
     toast.success(message, {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
     });
-}
-const error = (message) => {
+  }
+  const error = (message) => {
     toast.error(message, {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
     });
-}
+  }
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const [bookService,setBookService] = useState({
-    name:"",
-    number:0,
-    email:"",
-    date:"",
-    company:"",
-    model:"",
-    regNo:"",
-    ModOfService:"",
-    vehiclePickup:"false",
-    address:"",
-    message:""
+  const [bookService, setBookService] = useState({
+    name: "",
+    number: 0,
+    email: "",
+    date: "",
+    company: "",
+    model: "",
+    regNo: "",
+    ModOfService: "",
+    vehiclePickup: "false",
+    address: "",
+    message: ""
   })
 
-  const handleBookService = async (e)=>{
+  const handleBookService = async (e) => {
     e.preventDefault()
 
 
-    const {company,model,regNo,ModOfService,vehiclePickup,address} = bookService
-    if(!company || !model || !regNo || !ModOfService || !vehiclePickup || !address){
+    const { company, model, regNo, ModOfService, vehiclePickup, address } = bookService
+    if (!company || !model || !regNo || !ModOfService || !vehiclePickup || !address) {
       info("Please fill the form")
-    }else{
+    } else {
       const result = await RequestServiceAPI(bookService)
-      if(result.status==200){
+      if (result.status == 200) {
         success(result.data)
-      }else{
+        setBookService({
+          name: "",
+          number: 0,
+          email: "",
+          date: "",
+          company: "",
+          model: "",
+          regNo: "",
+          ModOfService: "",
+          vehiclePickup: "false",
+          address: "",
+          message: ""
+        })
+      } else {
         info("Please after some times")
       }
       // console.log(result);
     }
   }
 
-  useEffect(()=>{
-    if(bookService.name===""){
-    const userDetails =  JSON.parse(sessionStorage.getItem('existingUser'))
-    const date = (new Date()).toLocaleDateString('sv-SE')
-    setBookService({...bookService, name:userDetails.name, email:userDetails.email, number:userDetails.mobno, date})
+  useEffect(() => {
+    if (bookService.name === "") {
+      const userDetails = JSON.parse(sessionStorage.getItem('existingUser'))
+      const date = (new Date()).toLocaleDateString('sv-SE')
+      setBookService({ ...bookService, name: userDetails.name, email: userDetails.email, number: userDetails.mobno, date })
     }
-    
-  },[])
+
+  }, [])
   // console.log(bookService);
   return (
     <div>
@@ -120,23 +133,23 @@ const error = (message) => {
           <h5>Vehicle Details</h5>
           <div className='vehicle-info'>
             <label htmlFor="company">COMPANY</label><br />
-            <input type="text" name='uname' placeholder='Enter Vehicle Company' value={bookService.company} onChange={(e)=>setBookService({...bookService, company:e.target.value})} required />
+            <input type="text" name='uname' placeholder='Enter Vehicle Company' value={bookService.company} onChange={(e) => setBookService({ ...bookService, company: e.target.value })} required />
             <div className="veh-form-underline"></div>
           </div>
           <div className='vehicle-info mt-3'>
             <label htmlFor="model">MODEL NAME</label><br />
-            <input type="text" name='uname' placeholder='Enter Model Name' value={bookService.model} onChange={(e)=>setBookService({...bookService, model:e.target.value})} required />
+            <input type="text" name='uname' placeholder='Enter Model Name' value={bookService.model} onChange={(e) => setBookService({ ...bookService, model: e.target.value })} required />
             <div className="veh-form-underline"></div>
           </div>
           <div className='vehicle-info mt-3'>
             <label htmlFor="regNo">REGISTRATION NUMBER</label><br />
-            <input type="text" name='uname' placeholder='eg:KL10AB1234' value={bookService.regNo} onChange={(e)=>setBookService({...bookService, regNo:e.target.value})} required />
+            <input type="text" name='uname' placeholder='eg:KL10AB1234' value={bookService.regNo} onChange={(e) => setBookService({ ...bookService, regNo: e.target.value.toUpperCase() })} required />
             <div className="veh-form-underline"></div>
           </div>
 
           <h5 className='mt-4'>Mode Of Service</h5>
           <div className='vehicle-info'>
-            <select name="modOfService" id="modOfService" value={bookService.ModOfService} onChange={(e)=>setBookService({...bookService, ModOfService:e.target.value})} required>
+            <select name="modOfService" id="modOfService" value={bookService.ModOfService} onChange={(e) => setBookService({ ...bookService, ModOfService: e.target.value })} required>
               <option value="">None</option>
               <option value="Periodic Service">Periodic Service</option>
               <option value="Body Polishing">Body Polishing</option>
@@ -151,7 +164,7 @@ const error = (message) => {
         <Col lg={6}>
           <h5 className='mt-4'>Vehicle Pickup</h5>
           <div className='vehicle-info mt-3'>
-            <select name="pickup" id="modOfService" value={bookService.vehiclePickup} onChange={(e)=>setBookService({...bookService, vehiclePickup:e.target.value})} required>
+            <select name="pickup" id="modOfService" value={bookService.vehiclePickup} onChange={(e) => setBookService({ ...bookService, vehiclePickup: e.target.value })} required>
               <option value="No">No</option>
               <option value="Yes">Yes</option>
             </select>
@@ -159,17 +172,17 @@ const error = (message) => {
           </div>
           <div className='vehicle-info mt-3'>
             <label>Address (for billing)</label><br />
-            <textarea style={{ backgroundColor: "transparent", color: "white", padding: "5px", width: "100%", border: "0px", outline: "0px" }} rows="2" value={bookService.address} onChange={(e)=>setBookService({...bookService, address:e.target.value})} required></textarea>
+            <textarea style={{ backgroundColor: "transparent", color: "white", padding: "5px", width: "100%", border: "0px", outline: "0px" }} rows="2" value={bookService.address} onChange={(e) => setBookService({ ...bookService, address: e.target.value })} required></textarea>
             <div className="veh-form-underline"></div>
           </div>
           <div className='vehicle-info mt-3'>
             <label>any words (about complaint)</label><br />
-            <textarea style={{ backgroundColor: "transparent", color: "white", padding: "5px", width: "100%", border: "0px", outline: "0px" }} rows="2" value={bookService.message} onChange={(e)=>setBookService({...bookService, message:e.target.value})} required></textarea>
+            <textarea style={{ backgroundColor: "transparent", color: "white", padding: "5px", width: "100%", border: "0px", outline: "0px" }} rows="2" value={bookService.message} onChange={(e) => setBookService({ ...bookService, message: e.target.value })} required></textarea>
             <div className="veh-form-underline"></div>
           </div>
         </Col>
         <div className='text-center mt-5'>
-          <button onClick={(e)=>handleBookService(e)} className='service-button'>Book Service</button>
+          <button onClick={(e) => handleBookService(e)} className='service-button'>Book Service</button>
         </div>
       </Row>
 

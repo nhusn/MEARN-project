@@ -4,7 +4,7 @@ import './ShopHome.css'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { Link } from 'react-router-dom';
-import { addOngoingAPI, allPendingServiceAPI, getAllCallRequestAPI, getAllOngoingServiceAPI, removeCallRequestAPI, removePendingServiceAPI } from '../Services/allAPI';
+import { addOngoingAPI, allPendingServiceAPI, getAllCallRequestAPI, getAllOngoingServiceAPI, removeCallRequestAPI, removePendingServiceAPI, updateOngoingServiceAPI } from '../Services/allAPI';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -148,9 +148,13 @@ function ShopHome() {
         }
     }
 
-    const handleServiceOngoing = async (e,value) => {
-        if(!value){
-            console.log(value);
+    const handleServiceOngoing = async (status,id,value) => {
+        if(!status){
+            const result = await updateOngoingServiceAPI(id,value)
+            if(result.status === 200){
+                success('Completed')
+                getAllOngoingService()
+            }
         }else{
             info("Already completed")
         }
@@ -334,34 +338,37 @@ function ShopHome() {
                                 <hr />
                                 <div className='d-flex justify-content-between'>
                                     <h6>Book Service</h6>
-                                    <i style={item.bookService ?{ color: "#ff5e00" }:{cursor:"pointer"}} className={item.bookService? "fa-solid fa-circle-check":"fa-regular fa-circle"} onClick={(e)=>handleServiceOngoing(e,item.bookService,item._id)}></i>
+                                    <i style={item.bookService ?{ color: "#ff5e00" }:{cursor:"pointer"}} className={item.bookService? "fa-solid fa-circle-check":"fa-regular fa-circle"} onClick={()=>handleServiceOngoing(item.bookService,item._id)}></i>
                                 </div>
                                 <i className="fa-solid fa-arrow-down-long"></i>
                                 <div className='d-flex justify-content-between'>
                                     <h6>Vehicle Pickup</h6>
-                                    <i style={item.vehiclePickup ?{ color: "#ff5e00" }:{cursor:"pointer"}} className={item.vehiclePickup? "fa-solid fa-circle-check":"fa-regular fa-circle"}  onClick={(e)=>handleServiceOngoing(e,item.vehiclePickup,item._id)}></i>
+                                    <i style={item.vehiclePickup ?{ color: "#ff5e00" }:{cursor:"pointer"}} className={item.vehiclePickup? "fa-solid fa-circle-check":"fa-regular fa-circle"}  onClick={()=>handleServiceOngoing(item.vehiclePickup,item._id,"pickup")}></i>
                                 </div>
                                 <i className="fa-solid fa-arrow-down-long"></i>
                                 <div className='d-flex justify-content-between'>
                                     <h6>Inspection</h6>
-                                    <i style={item.inspection ?{ color: "#ff5e00" }:{cursor:"pointer"}} className={item.inspection? "fa-solid fa-circle-check":"fa-regular fa-circle"} onClick={(e)=>handleServiceOngoing(e,item.inspection,item._id)}></i>
+                                    <i style={item.inspection ?{ color: "#ff5e00" }:{cursor:"pointer"}} className={item.inspection? "fa-solid fa-circle-check":"fa-regular fa-circle"} onClick={()=>handleServiceOngoing(item.inspection,item._id,"inspection")}></i>
                                 </div>
                                 <i className="fa-solid fa-arrow-down-long"></i>
                                 <div className='d-flex justify-content-between'>
                                     <h6 style={{ color: 'blue', textDecoration: "underline", cursor: "pointer" }} onClick={handleShow}>Complaint Details</h6>
-                                    <i style={item.complaint ?{ color: "#ff5e00" }:{cursor:"pointer"}} className={item.complaint? "fa-solid fa-circle-check":"fa-regular fa-circle"} onClick={(e)=>handleServiceOngoing(e,item.complaint,item._id)}></i>
+                                    <i style={item.complaint ?{ color: "#ff5e00" }:{cursor:"pointer"}} className={item.complaint? "fa-solid fa-circle-check":"fa-regular fa-circle"} onClick={()=>handleServiceOngoing(item.complaint,item._id,"complaint")}></i>
                                 </div>
                                 <i className="fa-solid fa-arrow-down-long"></i>
                                 <div className='d-flex justify-content-between'>
                                     <h6>Service Done</h6>
-                                    <i style={item.serviceDone ?{ color: "#ff5e00" }:{cursor:"pointer"}} className={item.serviceDone? "fa-solid fa-circle-check":"fa-regular fa-circle"}  onClick={(e)=>handleServiceOngoing(e,item.serviceDone,item._id)}></i>
+                                    <i style={item.serviceDone ?{ color: "#ff5e00" }:{cursor:"pointer"}} className={item.serviceDone? "fa-solid fa-circle-check":"fa-regular fa-circle"}  onClick={()=>handleServiceOngoing(item.serviceDone,item._id,"service")}></i>
                                 </div>
                                 <i className="fa-solid fa-arrow-down-long"></i>
                                 <div className='d-flex justify-content-between'>
                                     <h6>Delivered</h6>
-                                    <i style={item.Delivered ?{ color: "#ff5e00" }:{cursor:"pointer"}} className={item.Delivered? "fa-solid fa-circle-check":"fa-regular fa-circle"} onClick={(e)=>handleServiceOngoing(e,item.Delivered,item._id)}></i>
+                                    <i style={item.Delivered ?{ color: "#ff5e00" }:{cursor:"pointer"}} className={item.Delivered? "fa-solid fa-circle-check":"fa-regular fa-circle"} onClick={()=>handleServiceOngoing(item.Delivered,item._id,"delivered")}></i>
                                 </div>
-                                <div className='text-center'><Link to={'/billing'}><button className='create-btn'>Create Bill</button></Link></div>
+                                {
+                                    item.serviceDone && <div className='text-center'><Link to={'/billing'}><button style={item.createBill ?  {opacity:.8}: {color:""} } disabled={item.createBill } className='create-btn'>Create Bill</button></Link></div>
+                                }
+                                
                             </div>
                         </Col>
                     ))
