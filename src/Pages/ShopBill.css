@@ -38,3 +38,14 @@
    color: #d16527;
 
 }
+.create-bill-btn{
+    width: 120px;
+    min-height: 50px;
+    background-color: #d16527;
+    clip-path: polygon(10% 0, 100% 0%, 100% 60%, 90% 100%, 0% 100%, 0 40%);
+    border: 3px solid #d16527;
+    color: white;
+    font-weight:600 ;
+    transition: clip-path .2s linear;
+    margin-top: 10px;
+}
