@@ -6,6 +6,7 @@ import Modal from "react-bootstrap/Modal";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { RequestServiceAPI, getAllHistoryAPI } from "../Services/allAPI";
+import Cookies from "js-cookie";
 
 function Dashboard() {
   const info = (message) => {
@@ -80,27 +81,31 @@ function Dashboard() {
     const { company, model, regNo, ModOfService, vehiclePickup, address } = bookService;
     if (!company || !model || !regNo || !ModOfService || !vehiclePickup || !address) {
       info("Please fill the form");
+      Cookies.set("cookieName", "cookieValue", { expires: 7 });
     } else {
-      const result = await RequestServiceAPI(bookService);
-      if (result.status == 200) {
-        success(result.data);
-        setBookService({
-          name: "",
-          number: 0,
-          email: "",
-          date: "",
-          company: "",
-          model: "",
-          regNo: "",
-          ModOfService: "",
-          vehiclePickup: "false",
-          address: "",
-          message: "",
-        });
-      } else {
-        info("Please after some times");
-      }
+      // const result = await RequestServiceAPI(bookService);
+      // if (result.status == 200) {
+      //   success(result.data);
+      //   setBookService({
+      //     name: "",
+      //     number: 0,
+      //     email: "",
+      //     date: "",
+      //     company: "",
+      //     model: "",
+      //     regNo: "",
+      //     ModOfService: "",
+      //     vehiclePickup: "false",
+      //     address: "",
+      //     message: "",
+      //   });
+
+      // } else {
+      //   info("Please after some times");
+      // }
       // console.log(result);
+      const cookieValue = Cookies.get("cookieName");
+      // console.log(cookieValue);
     }
   };
 
@@ -122,7 +127,7 @@ function Dashboard() {
     const result = await getAllHistoryAPI(JSON.parse(sessionStorage.getItem("existingUser")).email);
     if (result.status === 200) {
       setAllHistory(result.data);
-      console.log(result.data);
+      // console.log(result.data);
     } else {
       console.log(result);
     }
@@ -289,7 +294,7 @@ function Dashboard() {
                 </tr>
               </thead>
               <tbody>
-                {allHistory && 
+                {allHistory &&
                   allHistory.map((item, index) => (
                     <tr key={index}>
                       <td>{index + 1}</td>

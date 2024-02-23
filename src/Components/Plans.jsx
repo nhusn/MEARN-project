@@ -8,7 +8,7 @@ function Plans() {
     useEffect(()=>{
         if(sessionStorage.getItem("existingUser")){
             const user = JSON.parse(sessionStorage.getItem("existingUser"))
-            console.log(user.subscription.personal);
+            // console.log(user.subscription.personal);
         }
     })
     return (

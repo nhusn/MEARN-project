@@ -24,7 +24,7 @@ function Header() {
         <div className='head'>
             <Row>
                 <Col lg={4} md={6} sm={12}>
-                    <img src={Logo} alt="LENMOTOR" className='img-fluid w-50 ms-2' />
+                   <Link to={'/'}> <img src={Logo} alt="LENMOTOR" className='img-fluid w-50 ms-2' /></Link>
                 </Col>
 
                 <Col lg={4} md={6} sm={12}>
@@ -41,7 +41,10 @@ function Header() {
                             <Link style={{ textDecoration: "none" }} to={'/packages'}><p className='navi'>PACKAGES</p></Link>
                             <Link style={{ textDecoration: "none" }} to={'/about'}><p className='navi'>ABOUT</p></Link>
                             <Link style={{ textDecoration: "none" }} to={'/contact'}><p className='navi'>CONTACT</p></Link>
-                            <Link style={{ textDecoration: "none" }} to={'/profile'}><p className='navi'>PROFILE</p></Link>
+                            {   isCustomerLogged &&
+                                <Link style={{ textDecoration: "none" }} to={'/profile'}><p className='navi'>PROFILE</p></Link>
+                            }
+                            
                         </div>}
                 </Col>
                 <Col lg={4} md={6} sm={12}>
