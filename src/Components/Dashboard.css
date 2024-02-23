@@ -25,7 +25,7 @@
 }
 .serv-history-title h5{
     position: absolute;
-    top: -20%;
+    top: -7%;
     z-index: 0;
     opacity: .4;
     -webkit-text-stroke-color: rgb(124, 110, 110);
@@ -35,7 +35,7 @@
     position: relative;
 }
 .serv-history-group:hover h5{
-    top: -30%;
+    top: -15%;
     opacity: 1;
 }
 

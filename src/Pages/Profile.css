@@ -28,6 +28,11 @@
     margin-top: 20px;
     color: white;
 }
+.profile-inputs input::-webkit-outer-spin-button,
+.profile-inputs input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 .profile-inputs ::placeholder{
     position: absolute;
     left: 30px;

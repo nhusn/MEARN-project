@@ -98,6 +98,7 @@ function ShopBill() {
     chasisNo: "",
     engineNo: "",
     modelName: "",
+    totalAmount: 0,
   });
   const [editHistoryIndex, setEditHistoryIndex] = useState();
   const [edithistory, setEditHistory] = useState({
@@ -146,6 +147,7 @@ function ShopBill() {
 
   const navigate = useNavigate();
   const item = useParams();
+  const [netAmount, setNetAmount] = useState(0);
   const handleCreateBill = async () => {
     const {
       email,
@@ -156,7 +158,6 @@ function ShopBill() {
       jobDate,
       invoiceType,
       repairType,
-      km,
       registerNo,
       chasisNo,
       engineNo,
@@ -164,26 +165,29 @@ function ShopBill() {
     } = customerDetails;
 
     if (
-      (!email,
-      !invoiceDate,
-      !billedAddress,
-      !mobNo,
-      !techName,
-      !jobDate,
-      !invoiceType,
-      !repairType,
-      !km,
-      !registerNo,
-      !chasisNo,
-      !engineNo,
-      !modelName)
+      !invoiceDate ||
+      !billedAddress ||
+      !mobNo ||
+      !techName ||
+      !jobDate ||
+      !invoiceType ||
+      !repairType ||
+      !registerNo ||
+      !chasisNo ||
+      !engineNo ||
+      !modelName
     ) {
       info("Please fill the form Completely");
     } else if (allHistory.length === 0) {
       info("Please fill the parts details");
     } else {
-      console.log(item);
-
+      let num = 0;
+      allHistory.forEach((item) => {
+        let total = item.qty * item.rate - item.discount;
+        num += total;
+      });
+      setCustomerDetails({ ...customerDetails, totalAmount: num });
+      console.log(num);
       const result = await addToHistoryAPI(customerDetails, allHistory, item._id);
       if (result.status === 200) {
         success("History added");
@@ -203,8 +207,8 @@ function ShopBill() {
           engineNo: "",
           modelName: "",
         });
-        setTimeout(navigate("/shop"),4000)
-        
+        navigate("/shop")
+
       } else {
         error("Server error,Please try after some times");
         console.log(result);
