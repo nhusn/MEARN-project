@@ -60,6 +60,7 @@ function Dashboard() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const [availableCars, setAvailableCars] = useState([]);
 
   const [bookService, setBookService] = useState({
     name: "",
@@ -133,6 +134,435 @@ function Dashboard() {
     }
   };
 
+  const handleCampanyModel = () => {
+
+    if (bookService.company == "Suzuki") {
+      setAvailableCars([
+        "Alto",
+        "Baleno",
+        "Celerio",
+        "Ciaz",
+        "Dzire",
+        "Ertiga",
+        "Ignis",
+        "S-Cross",
+        "Swift",
+        "Vitara Brezza",
+        "XL6",
+        "Jimny",
+        "Solio",
+        "Every",
+        "Lapin",
+        "MR Wagon",
+        "Wagon R",
+        "Palette",
+        "Swift Sport",
+        "Grand Vitara",
+        "SX4",
+        "A-Star",
+        "Kizashi",
+        "Splash",
+        "Fronte",
+        "Swift",
+        "Escudo",
+        "Twin",
+        "Carry",
+        "Swift Hybrid",
+        "Xbee",
+        "Wagon R Hybrid",
+        "Solio Bandit",
+        "Hustler",
+        "Spacia",
+        "Jimny Sierra",
+        "Wagon R Stingray",
+        "MR Wagon",
+        "Mighty Boy",
+        "Carry Truck",
+        "Alto Works",
+      ]);
+    } else if (bookService.company == "Ford") {
+      setAvailableCars([
+        "Fiesta",
+        "Focus",
+        "Fusion",
+        "Taurus",
+        "Mustang",
+        "GT",
+        "Escape",
+        "Edge",
+        "Flex",
+        "Explorer",
+        "Expedition",
+        "Bronco",
+        "Ranger",
+        "F-150",
+        "Super Duty",
+        "Transit Connect",
+        "Transit",
+        "EcoSport",
+        "Mondeo",
+        "Ka+",
+        "Puma",
+        "Kuga",
+        "Raptor",
+        "Maverick",
+        "E-Series",
+        "Everest",
+        "Endeavour",
+        "Fusion Hybrid",
+        "Fiesta ST",
+        "Focus ST",
+        "Edge ST",
+        "Bronco Sport",
+        "Transit Custom",
+        "Transit Courier",
+        "Tourneo Connect",
+        "Tourneo Custom",
+        "Mustang Mach-E",
+        "GT",
+        "Ranger Raptor",
+        "Super Duty Tremor",
+      ]);
+    } else if (bookService.company == "Toyota") {
+      setAvailableCars([
+        "Fortuner",
+        "Innova Crysta",
+        "Glanza",
+        "Yaris",
+        "Urban Cruiser",
+        "Camry",
+        "Vellfire",
+        "Land Cruiser",
+        "GR Supra",
+        "Toyota Glanza",
+        "Toyota Urban Cruiser",
+        "Toyota Yaris",
+        "Toyota Innova Crysta",
+        "Toyota Fortuner",
+        "Toyota Camry",
+        "Toyota Vellfire",
+        "Toyota Land Cruiser",
+        "Toyota Land Cruiser Prado",
+        "Toyota GR Supra",
+      ]);
+    } else if (bookService.company == "Hyundai") {
+      setAvailableCars([
+        "Hyundai Santro",
+        "Hyundai Grand i10 Nios",
+        "Hyundai i20",
+        "Hyundai Aura",
+        "Hyundai Verna",
+        "Hyundai Elantra",
+        "Hyundai Venue",
+        "Hyundai Creta",
+        "Hyundai Alcazar",
+        "Hyundai Tucson",
+        "Hyundai Kona Electric",
+        "Hyundai Palisade",
+      ]);
+    } else if (bookService.company == "Mahindra") {
+      setAvailableCars([
+        "Bolero",
+        "Scorpio",
+        "Thar",
+        "XUV300",
+        "XUV500",
+        "TUV300",
+        "KUV100 NXT",
+        "Alturas G4",
+        "Marazzo",
+        "E-Verito",
+        "eKUV100",
+        "Bolero",
+        "Scorpio",
+        "Thar",
+        "XUV300",
+        "XUV500",
+        "TUV300",
+        "KUV100 NXT",
+        "Alturas G4",
+        "Marazzo",
+        "Verito",
+        "Verito Vibe",
+        "eKUV100",
+        "e2o Plus",
+        "Xylo",
+        "NuvoSport",
+        "Quanto",
+        "Jeeto",
+        "Supro",
+        "Maxximo",
+        "Maxximo Mini Van",
+        "Bolero Pik-Up",
+      ]);
+    } else if (bookService.company == "Tata") {
+      setAvailableCars([
+        "Tata Tiago",
+        "Tata Tigor",
+        "Tata Altroz",
+        "Tata Nexon",
+        "Tata Harrier",
+        "Tata Safari",
+        "Tata Punch",
+        "Tata Nano", // Discontinued
+        "Tata Indica", // Discontinued
+        "Tata Indigo", // Discontinued
+        "Tata Sumo", // Discontinued
+        "Tata Safari Storme", // Discontinued
+        "Tata Aria", // Discontinued
+        "Tata Hexa", // Discontinued
+        "Tata Zest",
+        "Tata Bolt",
+        "Tata Nexon EV",
+        "Tata Tigor EV",
+        "Tata Altroz EV", // Expected
+        "Tata HBX", // Expected
+        "Tata Gravitas", // Expected
+      ]);
+    } else if (bookService.company == "Volkswaon") {
+      setAvailableCars([
+        "Volkswagen Polo",
+        "Volkswagen Vento",
+        "Volkswagen Taigun",
+        "Volkswagen Tiguan Allspace",
+        "Volkswagen T-Roc",
+        "Volkswagen Passat",
+        "Volkswagen Ameo",
+        "Volkswagen Jetta",
+        "Volkswagen Beetle",
+      ]);
+    } else if (bookService.company == "Scoda") {
+      setAvailableCars(["Škoda Octavia", "Škoda Rapid", "Škoda Superb", "Škoda Kushaq", "Škoda Kodiaq"]);
+    } else if (bookService.company == "Volvo") {
+      setAvailableCars([
+        "Volkswagen Polo",
+        "Volkswagen Vento",
+        "Volkswagen Taigun",
+        "Volkswagen Tiguan Allspace",
+        "Volkswagen T-Roc",
+        "Volkswagen Passat",
+        "Volkswagen Ameo", // Discontinued
+        "Volkswagen Jetta", // Discontinued
+        "Volkswagen Beetle", // Discontinued
+      ]);
+    } else if (bookService.company == "Benz") {
+      setAvailableCars([
+        "Mercedes-Benz A-Class",
+        "Mercedes-Benz B-Class",
+        "Mercedes-Benz C-Class",
+        "Mercedes-Benz CLA",
+        "Mercedes-Benz CLS",
+        "Mercedes-Benz E-Class",
+        "Mercedes-Benz S-Class",
+        "Mercedes-Benz GLA",
+        "Mercedes-Benz GLB",
+        "Mercedes-Benz GLC",
+        "Mercedes-Benz GLE",
+        "Mercedes-Benz GLS",
+        "Mercedes-Benz G-Class",
+        "Mercedes-Benz EQC",
+        "Mercedes-Benz SLK",
+        "Mercedes-Benz SL",
+        "Mercedes-Benz SLC",
+        "Mercedes-Benz CL",
+        "Mercedes-Benz CLK",
+        "Mercedes-Benz SLR McLaren",
+        "Mercedes-Benz AMG GT",
+        "Mercedes-Benz Maybach S-Class",
+        "Mercedes-Benz V-Class",
+      ]);
+    } else if (bookService.company == "Bmv") {
+      setAvailableCars([
+        "BMW 1 Series",
+        "BMW 2 Series",
+        "BMW 3 Series",
+        "BMW 5 Series",
+        "BMW 6 Series",
+        "BMW 7 Series",
+        "BMW X1",
+        "BMW X2",
+        "BMW X3",
+        "BMW X4",
+        "BMW X5",
+        "BMW X6",
+        "BMW X7",
+        "BMW Z4",
+        "BMW M2",
+        "BMW M3",
+        "BMW M4",
+        "BMW M5",
+        "BMW M8",
+        "BMW 1 Series",
+        "BMW 2 Series",
+        "BMW 3 Series",
+        "BMW 4 Series",
+        "BMW 5 Series",
+        "BMW 6 Series",
+        "BMW 7 Series",
+        "BMW 8 Series",
+        "BMW X1",
+        "BMW X2",
+        "BMW X3",
+        "BMW X4",
+        "BMW X5",
+        "BMW X6",
+        "BMW X7",
+        "BMW Z4",
+        "BMW i3",
+        "BMW i8",
+        "BMW M2",
+        "BMW M3",
+        "BMW M4",
+        "BMW M5",
+        "BMW M6",
+        "BMW M8",
+        "BMW X3 M",
+        "BMW X4 M",
+        "BMW X5 M",
+        "BMW X6 M",
+        "BMW Alpina B7",
+        "BMW Alpina B8",
+      ]);
+    } else if (bookService.company == "Porsche") {
+      setAvailableCars([
+        "Porsche 718 Cayman",
+        "Porsche 718 Boxster",
+        "Porsche 911 Carrera",
+        "Porsche 911 Turbo",
+        "Porsche Panamera",
+        "Porsche Macan",
+        "Porsche Cayenne",
+        "Porsche Taycan",
+      ]);
+    } else if (bookService.company == "Nissan") {
+      setAvailableCars(["Nissan Micra", "Nissan Sunny", "Nissan Kicks", "Nissan Terrano", "Nissan Magnite"]);
+    } else if (bookService.company == "Kia") {
+      setAvailableCars([
+        "Kia Seltos",
+        "Kia Carnival",
+        "Kia Sonet",
+        "Kia Carens", // Expected
+      ]);
+    } else if (bookService.company == "MG") {
+      setAvailableCars(["MG Hector", "MG Hector Plus", "MG ZS EV", "MG Gloster", "MG Astor"]);
+    } else if (bookService.company == "BYD") {
+      setAvailableCars(["BYD seal", "BYD Atto 3", "BYD E6"]);
+    } else if (bookService.company == "Renoult") {
+      setAvailableCars([
+        "Renault Kwid",
+        "Renault Triber",
+        "Renault Duster",
+        "Renault Captur",
+        "Renault Fluence", // Discontinued
+        "Renault Pulse", // Discontinued
+        "Renault Scala", // Discontinued
+        "Renault Lodgy", // Discontinued
+      ]);
+    } else if (bookService.company == "Land Rover") {
+      setAvailableCars([
+        "Land Rover Defender",
+        "Land Rover Discovery",
+        "Land Rover Discovery Sport",
+        "Land Rover Range Rover",
+        "Land Rover Range Rover Sport",
+        "Land Rover Range Rover Velar",
+        "Land Rover Range Rover Evoque",
+        "Land Rover Range Rover Evoque Convertible",
+      ]);
+    } else if (bookService.company == "Jaguar") {
+      setAvailableCars([
+        "Jaguar XE",
+        "Jaguar XF",
+        "Jaguar XJ",
+        "Jaguar F-Type",
+        "Jaguar E-Pace",
+        "Jaguar F-Pace",
+        "Jaguar I-Pace",
+      ]);
+    } else if (bookService.company == "Buggati") {
+      setAvailableCars(["Bugatti Veyron", "Bugatti Chiron", "Bugatti Divo", "Bugatti La Voiture Noire"]);
+    } else if (bookService.company == "Rolls-Royce") {
+      setAvailableCars([
+        "Rolls-Royce Ghost",
+        "Rolls-Royce Phantom",
+        "Rolls-Royce Wraith",
+        "Rolls-Royce Dawn",
+        "Rolls-Royce Cullinan",
+      ]);
+    } else if (bookService.company == "Jeep") {
+      setAvailableCars([
+        "Jeep Compass",
+        "Jeep Wrangler",
+        "Jeep Grand Cherokee",
+        "Jeep Grand Cherokee SRT",
+        "Jeep Grand Cherokee Trackhawk",
+        "Jeep Gladiator",
+      ]);
+    } else if (bookService.company == "Isuzu") {
+      setAvailableCars(["Isuzu D-Max Regular Cab", "Isuzu D-Max S-Cab", "Isuzu D-Max V-Cross"]);
+    } else if (bookService.company == "Lexus") {
+      setAvailableCars(["Lexus ES", "Lexus LS", "Lexus LX", "Lexus RX", "Lexus NX", "Lexus UX"]);
+    } else if (bookService.company == "Audi") {
+      setAvailableCars([
+        "Audi A3",
+        "Audi A4",
+        "Audi A6",
+        "Audi A8",
+        "Audi Q2",
+        "Audi Q3",
+        "Audi Q5",
+        "Audi Q7",
+        "Audi Q8",
+        "Audi e-tron",
+        "Audi e-tron GT",
+        "Audi TT",
+        "Audi RS Q8",
+        "Audi RS7",
+        "Audi RS5",
+        "Audi RS4",
+        "Audi RS3",
+        "Audi S8",
+        "Audi S7",
+        "Audi S6",
+        "Audi S5",
+        "Audi S4",
+        "Audi S3",
+        "Audi R8",
+      ]);
+    } else if (bookService.company == "Mini") {
+      setAvailableCars([
+        "Mini Cooper 3-door",
+        "Mini Cooper 5-door",
+        "Mini Clubman",
+        "Mini Countryman",
+        "Mini Convertible",
+        "Mini John Cooper Works",
+      ]);
+    } else if (bookService.company == "Force") {
+      setAvailableCars([
+        "Force Gurkha",
+        "Force Trax Cruiser",
+        "Force Trax Toofan",
+        "Force Trax Kargo King",
+        "Force Trax Delivery Van",
+        "Force Traveller",
+      ]);
+    } else if (bookService.company == "Datsun") {
+      setAvailableCars(["Datsun GO", "Datsun GO+"]);
+    } else if (bookService.company == "Fiat") {
+      setAvailableCars([
+        "Fiat Linea",
+        "Fiat Punto",
+        "Fiat Avventura",
+        "Fiat Urban Cross",
+        "Fiat Abarth Punto",
+        "Fiat Abarth Avventura",
+      ]);
+    } else if (bookService.company == "other") {
+    } else {
+      setAvailableCars([]);
+    }
+  };
   useEffect(() => {
     getUserName();
     getServiceHistory();
@@ -164,9 +594,42 @@ function Dashboard() {
               placeholder="Enter Vehicle Company"
               value={bookService.company}
               onChange={(e) => setBookService({ ...bookService, company: e.target.value })}
+              list="vehicleCompanies"
               required
             />
             <div className="veh-form-underline"></div>
+            <datalist id="vehicleCompanies">
+              <option value="Ford">Ford</option>
+              <option value="Suzuki">Suzuki</option>
+              <option value="Toyota">Toyota</option>
+              <option value="Hyundai">Hyundai</option>
+              <option value="Mahindra">Mahindra</option>
+              <option value="Tata">Tata</option>
+              <option value="Volkswaon">Volkswagon</option>
+              <option value="Scoda">Scoda</option>
+              <option value="Volvo">Volvo</option>
+              <option value="Benz">Benz</option>
+              <option value="Bmv">Bmv</option>
+              <option value="Porche">Porsche</option>
+              <option value="Nissan">Nissan</option>
+              <option value="Kia">Kia</option>
+              <option value="MG">MG</option>
+              <option value="BYD">BYD</option>
+              <option value="Renoult">Renoult</option>
+              <option value="Land Rover">land Rover</option>
+              <option value="Jaguar">Jaguar</option>
+              <option value="Buggati">Buggati</option>
+              <option value="Rolls-Royce"></option>
+              <option value="Jeep">Jeep</option>
+              <option value="Isuzu">Isuzu</option>
+              <option value="Lexus">Lexus</option>
+              <option value="Audi">Audi</option>
+              <option value="Mini">Mini</option>
+              <option value="Force">Force</option>
+              <option value="Datsun">Datsun</option>
+              <option value="Fiat">Fiat</option>
+              <option value="other">Other</option>
+            </datalist>
           </div>
           <div className="vehicle-info mt-3">
             <label htmlFor="model">MODEL NAME</label>
@@ -176,10 +639,15 @@ function Dashboard() {
               name="uname"
               placeholder="Enter Model Name"
               value={bookService.model}
+              list="modelNames"
               onChange={(e) => setBookService({ ...bookService, model: e.target.value })}
+              onClick={handleCampanyModel}
               required
             />
             <div className="veh-form-underline"></div>
+            <datalist id="modelNames">
+              {availableCars && availableCars.map((item,index) => <option key={index} value={item}>{item}</option>)}
+            </datalist>
           </div>
           <div className="vehicle-info mt-3">
             <label htmlFor="regNo">REGISTRATION NUMBER</label>

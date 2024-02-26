@@ -1,71 +1,89 @@
 .cleaning-det P::before {
-    content: "\25A0";
-    color:#ff5e00;
-    font-weight: bold;
-    display: inline-block; 
-    width: 1em;
+  content: "\25A0";
+  color: #ff5e00;
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
 }
-.cleaning-det P{
-    color: white;
+.cleaning-det P {
+  color: white;
 }
 
-.cleaning-det{
-    height: 80vh;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    flex-wrap: no-wrap;
+.cleaning-det {
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: no-wrap;
 }
 .cleaning-det button {
-    width: 190px;
-    min-height: 60px;
-    background-color: #d16527;
-    clip-path: polygon(10% 0, 100% 0%, 100% 60%, 90% 100%, 0% 100%, 0 40%);
-    border: 3px solid #d16527;
-    color: white;
-    font-weight:600 ;
-    transition: clip-path .2s linear;
-    margin-top: 30px;
+  width: 190px;
+  min-height: 60px;
+  background-color: #d16527;
+  clip-path: polygon(10% 0, 100% 0%, 100% 60%, 90% 100%, 0% 100%, 0 40%);
+  border: 3px solid #d16527;
+  color: white;
+  font-weight: 600;
+  transition: clip-path 0.2s linear;
+  margin-top: 30px;
 }
-.cleaning-det button:hover{
-    clip-path: polygon(0% 0, 100% 0%, 100% 60%, 100% 100%, 0% 100%, 0 40%);
-    background-color: black;
-}
-
-.cleaning-image, img{
-    overflow: hidden;
-    transition: transform .2s; /* Animation */
+.cleaning-det button:hover {
+  clip-path: polygon(0% 0, 100% 0%, 100% 60%, 100% 100%, 0% 100%, 0 40%);
+  background-color: black;
 }
 
-.cleaning-image{
-    padding-left: 0px;
-    opacity: .7;
+.cleaning-image,
+img {
+  overflow: hidden;
+  transition: transform 0.2s; /* Animation */
 }
 
-.cleaning-image:hover img{
-    transform: scale(1.2);
-    cursor: pointer;
+.cleaning-image {
+  padding-left: 0px;
+  opacity: 0.7;
+  /* height: 200px; */
 }
 
-.cleaning-det-left{
-    height: 80vh;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    flex-wrap: no-wrap;
+.cleaning-image:hover img {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.cleaning-det-left {
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: no-wrap;
 }
 .cleaning-det-left button {
-    width: 190px;
-    min-height: 60px;
-    background-color: #d16527;
-    clip-path: polygon(10% 0, 100% 0%, 100% 60%, 90% 100%, 0% 100%, 0 40%);
-    border: 3px solid #d16527;
-    color: white;
-    font-weight:600 ;
-    transition: clip-path .2s linear;
-    margin-top: 30px;
+  width: 190px;
+  min-height: 60px;
+  background-color: #d16527;
+  clip-path: polygon(10% 0, 100% 0%, 100% 60%, 90% 100%, 0% 100%, 0 40%);
+  border: 3px solid #d16527;
+  color: white;
+  font-weight: 600;
+  transition: clip-path 0.2s linear;
+  margin-top: 30px;
 }
-.cleaning-det-left button:hover{
-    clip-path: polygon(0% 0, 100% 0%, 100% 60%, 100% 100%, 0% 100%, 0 40%);
-    background-color: black;
+.cleaning-det-left button:hover {
+  clip-path: polygon(0% 0, 100% 0%, 100% 60%, 100% 100%, 0% 100%, 0 40%);
+  background-color: black;
+}
+
+@media screen and (max-width: 780px) {
+  .cleaning-image img {
+    width: 100%;
+  }
+  .cleaning-det {
+    /* height: auto; */
+  }
+  .cleaning-det-left button {
+    margin-top: 0;
+  }
+  .cleaning-det button {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 }

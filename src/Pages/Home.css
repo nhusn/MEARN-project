@@ -133,4 +133,15 @@
     width: 100%;
     overflow: hidden;
 }
+.home-page-title{
+    margin-left: 50px;
+}
 
+@media screen and (max-width: 780px) {
+    .home-page-title{
+        margin-left: 10px;
+    }
+    .home-page{
+        margin: 10px 0;
+    }
+}

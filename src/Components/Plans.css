@@ -36,3 +36,16 @@ li::before {
     clip-path: polygon(0% 0, 100% 0%, 100% 60%, 100% 100%, 0% 100%, 0 40%);
     background-color: #161616;
 }
+.plan-main-div{
+    margin-top: 1500px;
+    padding: 50px;
+}
+
+@media screen and (max-width: 780px) {
+    .plan-main-div{
+        padding: 0;
+    }
+    .aff-plan{
+        margin-bottom: 50px;
+    }
+}

@@ -1,37 +1,50 @@
-.HTS-container{
-    background-color: #161616;
-    padding:100px 0;
+.HTS-container {
+  background-color: #161616;
+  padding: 100px 0;
 }
-.HTS-steps p{
-    color: white;
-    font-weight: 100;
-
+.HTS-steps p {
+  color: white;
+  font-weight: 100;
 }
-
-.horizo-line{
-    position: relative;
-    height: .5px;
-    width: 100%;
-    background-color: #4e4946;
-    margin-bottom: 5%;
-    transition: .1s background-color ease-in;
-    margin-bottom: 30px;
+.HTS-title {
+  padding: 70px;
+}
+.HTS-title h3,
+p {
+  padding: 10px;
 }
 
-.horizo-line::before{
-    content: "";
-    position: absolute;
-    height: .5px;
-    width: 100%;
-    background-color: #ff5e00;
-    transform: scaleX(0);
-    transition: transform 0.2s ease-in-out;
+.horizo-line {
+  position: relative;
+  height: 0.5px;
+  width: 100%;
+  background-color: #4e4946;
+  margin-bottom: 5%;
+  transition: 0.1s background-color ease-in;
+  margin-bottom: 30px;
 }
 
-.HTS-steps:hover .horizo-line:before{
-    transform: scaleX(1);
- }
+.horizo-line::before {
+  content: "";
+  position: absolute;
+  height: 0.5px;
+  width: 100%;
+  background-color: #ff5e00;
+  transform: scaleX(0);
+  transition: transform 0.2s ease-in-out;
+}
 
- .HTS-container span{
-    color: #ff5e00;
- }
+.HTS-steps:hover .horizo-line:before {
+  transform: scaleX(1);
+}
+
+.HTS-container span {
+  color: #ff5e00;
+}
+
+@media screen and (max-width: 780px) {
+  .HTS-title h3,
+  p {
+    padding: 0;
+  }
+}
