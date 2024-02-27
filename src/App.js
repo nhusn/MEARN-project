@@ -18,6 +18,7 @@ import { useContext } from "react";
 import CustomerRouteProtect from "./Protect Routh/CustomerRouteProtect";
 import ShopRouteProtect from "./Protect Routh/ShopRouteProtect";
 import LoginProtectRoutee from "./Protect Routh/LoginProtectRoutee";
+import ForgotPassword from "./Pages/ForgotPassword";
 
 function App() {
   const { isCustomerLogged, setIsCustomerLogged } = useContext(isCustomerLoggedInContext);
@@ -42,6 +43,7 @@ function App() {
           <Route path="/billing/:email/:_id" element={<ShopBill />} />
         </Route>
         <Route path="/users/:id/verify/:token" element={<EmailVerify />} />
+        <Route path="/password/:id/verify/:token" element={<ForgotPassword />} />
 
         <Route element={<LoginProtectRoutee/>}>
           <Route path="/login" element={<Login />} />

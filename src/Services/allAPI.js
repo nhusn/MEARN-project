@@ -70,13 +70,17 @@ export const addToHistoryAPI = async (customerDetails, allHistory, _id) => {
 };
 
 export const getAllHistoryAPI = async (email) => {
-    return await commonAPI("POST",`${server_URL}/all-history`,{email},appenHeader())
-}
+  return await commonAPI("POST", `${server_URL}/all-history`, { email }, appenHeader());
+};
 
 export const getOneHistoryAPI = async (id) => {
-    return await commonAPI("POST",`${server_URL}/history`,{id},appenHeader())
-}
+  return await commonAPI("POST", `${server_URL}/history`, { id }, appenHeader());
+};
 
-export const updateUserAPI = async (userDetails) =>{
-    return await commonAPI("POST",`${server_URL}/user/update`,userDetails,appenHeader())
-}
+export const updateUserAPI = async (userDetails) => {
+  return await commonAPI("POST", `${server_URL}/user/update`, userDetails, appenHeader());
+};
+
+export const forgotEmailVerifyAPI = async (id, token) => {
+  return await commonAPI("GET", `${server_URL}/password/${id}/forgot/verify/${token}`);
+};

@@ -82,31 +82,27 @@ function Dashboard() {
     const { company, model, regNo, ModOfService, vehiclePickup, address } = bookService;
     if (!company || !model || !regNo || !ModOfService || !vehiclePickup || !address) {
       info("Please fill the form");
-      Cookies.set("cookieName", "cookieValue", { expires: 7 });
     } else {
-      // const result = await RequestServiceAPI(bookService);
-      // if (result.status == 200) {
-      //   success(result.data);
-      //   setBookService({
-      //     name: "",
-      //     number: 0,
-      //     email: "",
-      //     date: "",
-      //     company: "",
-      //     model: "",
-      //     regNo: "",
-      //     ModOfService: "",
-      //     vehiclePickup: "false",
-      //     address: "",
-      //     message: "",
-      //   });
-
-      // } else {
-      //   info("Please after some times");
-      // }
+      const result = await RequestServiceAPI(bookService);
+      if (result.status == 200) {
+        success(result.data);
+        setBookService({
+          name: "",
+          number: 0,
+          email: "",
+          date: "",
+          company: "",
+          model: "",
+          regNo: "",
+          ModOfService: "",
+          vehiclePickup: "false",
+          address: "",
+          message: "",
+        });
+      } else {
+        info("Please after some times");
+      }
       // console.log(result);
-      const cookieValue = Cookies.get("cookieName");
-      // console.log(cookieValue);
     }
   };
 
@@ -134,8 +130,8 @@ function Dashboard() {
     }
   };
 
+  const date = new Date().toLocaleDateString("sv-SE");
   const handleCampanyModel = () => {
-
     if (bookService.company == "Suzuki") {
       setAvailableCars([
         "Alto",
@@ -646,7 +642,12 @@ function Dashboard() {
             />
             <div className="veh-form-underline"></div>
             <datalist id="modelNames">
-              {availableCars && availableCars.map((item,index) => <option key={index} value={item}>{item}</option>)}
+              {availableCars &&
+                availableCars.map((item, index) => (
+                  <option key={index} value={item}>
+                    {item}
+                  </option>
+                ))}
             </datalist>
           </div>
           <div className="vehicle-info mt-3">
@@ -716,6 +717,7 @@ function Dashboard() {
             ></textarea>
             <div className="veh-form-underline"></div>
           </div>
+
           <div className="vehicle-info mt-3">
             <label>any words (about complaint)</label>
             <br />
