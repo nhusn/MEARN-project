@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./forgetPassword.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { forgotEmailVerifyAPI } from "../Services/allAPI";
-import { useParams } from "react-router-dom";
+import { forgotEmailVerifyAPI, updatePasswordAPI } from "../Services/allAPI";
+import { useNavigate, useParams } from "react-router-dom";
 
 function ForgotPassword() {
   const info = (message) => {
@@ -54,20 +54,22 @@ function ForgotPassword() {
       theme: "dark",
     });
   };
+  const navigate = useNavigate();
 
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const params = useParams();
   const [validUrl, setValidUrl] = useState(false);
 
+  var token = "";
   const tokenVerify = async () => {
     const result = await forgotEmailVerifyAPI(params.id, params.token);
     if (result.data) {
       setValidUrl(true);
+      token = result.data.token;
     } else {
       setValidUrl(false);
     }
-    console.log(result);
   };
   useEffect(() => {
     tokenVerify();
@@ -81,7 +83,13 @@ function ForgotPassword() {
     if (newPassword.length >= 8) {
       if (regex.test(newPassword)) {
         if (newPassword === confirmPassword) {
-          success("success");
+          const result = await updatePasswordAPI(token, newPassword);
+          if (result.status === 200) {
+            success("Password Updated");
+            navigate("/");
+          } else {
+            info(result.response.data);
+          }
         } else {
           info("Password doesn't match");
         }

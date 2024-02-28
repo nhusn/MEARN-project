@@ -19,6 +19,7 @@ import CustomerRouteProtect from "./Protect Routh/CustomerRouteProtect";
 import ShopRouteProtect from "./Protect Routh/ShopRouteProtect";
 import LoginProtectRoutee from "./Protect Routh/LoginProtectRoutee";
 import ForgotPassword from "./Pages/ForgotPassword";
+import ForgotForm from "./Pages/ForgotForm";
 
 function App() {
   const { isCustomerLogged, setIsCustomerLogged } = useContext(isCustomerLoggedInContext);
@@ -32,7 +33,6 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/packages" element={<Packages />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/register" element={<Register />} />
 
         <Route element={<CustomerRouteProtect />}>
           <Route path="/view/:id" element={<ViewHistory />} />
@@ -45,8 +45,10 @@ function App() {
         <Route path="/users/:id/verify/:token" element={<EmailVerify />} />
         <Route path="/password/:id/verify/:token" element={<ForgotPassword />} />
 
-        <Route element={<LoginProtectRoutee/>}>
+        <Route element={<LoginProtectRoutee />}>
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/forgot-password" element={<ForgotForm />} />
         </Route>
       </Routes>
     </>

@@ -68,19 +68,27 @@ function Login() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    const emailRegex = /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/;
+    const passRegex =
+      /^(?=.*[0-9])(?=.*[!@#$%^&*()_+{}|:"<>?`~\[\]\;',./\\])(?=.*[a-zA-Z])[a-zA-Z0-9!@#$%^&*()_+{}|:"<>?`~\[\]\;',./\\]{8,}$/;
     if (!userDetails.email == "" || !userDetails.password == "") {
-      const result = await loginAPI(userDetails);
-      if (result.status === 200) {
-        sessionStorage.setItem("existingUser", JSON.stringify(result.data.existingUser));
-        sessionStorage.setItem("token", result.data.token);
-        setIsCustomerLogged(true);
-        setUserDetails({
-          email: "",
-          password: "",
-        });
-        navigate("/");
-      } else {
-        warning(result.response.data);
+      if (emailRegex.test(userDetails.email) && passRegex.test(userDetails.password)) {
+        const result = await loginAPI(userDetails);
+        console.log(result);
+        if (result.status === 200) {
+          sessionStorage.setItem("existingUser", JSON.stringify(result.data.existingUser));
+          sessionStorage.setItem("token", result.data.token);
+          setIsCustomerLogged(true);
+          setUserDetails({
+            email: "",
+            password: "",
+          });
+          navigate("/");
+        } else {
+          warning(result.response.data);
+        }
+      }else{
+        info("Invalid email or password")
       }
     } else {
       info("Please fill the form completely");
@@ -218,7 +226,10 @@ function Login() {
                       </label>
                       <div className="login-form-underline"></div>
                     </div>
-                    <div className="mt-3" style={{ textAlign: "right" }}>
+                    <div className="mt-3 d-flex justify-content-between">
+                      <Link style={{ textDecoration: "none", color: "grey" }} to={"/forgot-password"}>
+                        forgot password ?
+                      </Link>
                       <Link style={{ textDecoration: "none", color: "grey" }} to={"/register"}>
                         create new account ?
                       </Link>

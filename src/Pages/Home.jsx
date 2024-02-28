@@ -85,7 +85,9 @@ function Home() {
               <button>
                 <i style={{ fontSize: "10px", color: "white" }} className="fa-solid fa-angle-right"></i>
               </button>{" "}
-              <p className="mt-3">DETAILS SERVICE</p>
+              <Link style={{ textDecoration: "none", color: "grey" }} to={"/service"}>
+                <p className="mt-3">DETAILS_SERVICE</p>
+              </Link>
             </div>
           </Col>
           <Col lg={4} md={4} sm={6} xs={12} className="service-details">
@@ -100,7 +102,9 @@ function Home() {
               <button>
                 <i style={{ fontSize: "10px", color: "white" }} className="fa-solid fa-angle-right"></i>
               </button>{" "}
-              <p className="mt-3">DETAILS SERVICE</p>
+              <Link style={{ textDecoration: "none", color: "grey" }} to={"/service"}>
+                <p className="mt-3">DETAILS_SERVICE</p>
+              </Link>
             </div>
           </Col>
           <Col lg={4} md={4} sm={6} xs={12} className="service-details">
@@ -115,7 +119,9 @@ function Home() {
               <button>
                 <i style={{ fontSize: "10px", color: "white" }} className="fa-solid fa-angle-right"></i>
               </button>
-              <p className="mt-3">DETAILS SERVICE</p>
+              <Link style={{ textDecoration: "none", color: "grey" }} to={"/service"}>
+                <p className="mt-3">DETAILS_SERVICE</p>
+              </Link>
             </div>
           </Col>
         </Row>
@@ -133,7 +139,9 @@ function Home() {
               <button>
                 <i style={{ fontSize: "10px", color: "white" }} className="fa-solid fa-angle-right"></i>
               </button>{" "}
-              <p className="mt-3">DETAILS SERVICE</p>
+              <Link style={{ textDecoration: "none", color: "grey" }} to={"/service"}>
+                <p className="mt-3">DETAILS_SERVICE</p>
+              </Link>
             </div>
           </Col>
           <Col lg={4} md={4} sm={6} xs={12} className="service-details">
@@ -148,7 +156,9 @@ function Home() {
               <button>
                 <i style={{ fontSize: "10px", color: "white" }} className="fa-solid fa-angle-right"></i>
               </button>{" "}
-              <p className="mt-3">DETAILS SERVICE</p>
+              <Link style={{ textDecoration: "none", color: "grey" }} to={"/service"}>
+                <p className="mt-3">DETAILS_SERVICE</p>
+              </Link>
             </div>
           </Col>
           <Col lg={4} md={4} sm={6} xs={12} className="service-details">
@@ -163,7 +173,9 @@ function Home() {
               <button>
                 <i style={{ fontSize: "10px", color: "white" }} className="fa-solid fa-angle-right"></i>
               </button>
-              <p className="mt-3">DETAILS SERVICE</p>
+              <Link style={{ textDecoration: "none", color: "grey" }} to={"/service"}>
+                <p className="mt-3">DETAILS_SERVICE</p>
+              </Link>
             </div>
           </Col>
         </Row>

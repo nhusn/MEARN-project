@@ -4,13 +4,15 @@ import "./Plans.css";
 import { Link } from "react-router-dom";
 
 function Plans() {
-  const [userDetails, setUserDetails] = useState({});
+  const [userDetails, setUserDetails] = useState({
+    personal: false,
+    professional: false,
+  });
   useEffect(() => {
     if (sessionStorage.getItem("existingUser")) {
-      const user = JSON.parse(sessionStorage.getItem("existingUser"));
-      // console.log(user.subscription.personal);
+      setUserDetails(JSON.parse(sessionStorage.getItem("existingUser")).subscription);
     }
-  });
+  }, []);
   return (
     <>
       <Row style={{ margin: "auto" }} className="mt-5 plan-main-div">
@@ -55,7 +57,7 @@ function Plans() {
               </div>
             </div>
             <Link style={{ width: "100%" }} to={"/login"}>
-              <button disabled>SUBSCRIBE</button>
+              <button disabled={userDetails.personal}>SUBSCRIBE</button>
             </Link>
           </div>
         </Col>
@@ -91,7 +93,7 @@ function Plans() {
               </div>
             </div>
             <Link style={{ width: "100%" }} to={"/login"}>
-              <button>SUBSCRIBE</button>
+              <button disabled={userDetails.professional}>SUBSCRIBE</button>
             </Link>
           </div>
         </Col>

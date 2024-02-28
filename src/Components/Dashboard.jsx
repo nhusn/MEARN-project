@@ -6,7 +6,6 @@ import Modal from "react-bootstrap/Modal";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { RequestServiceAPI, getAllHistoryAPI } from "../Services/allAPI";
-import Cookies from "js-cookie";
 
 function Dashboard() {
   const info = (message) => {

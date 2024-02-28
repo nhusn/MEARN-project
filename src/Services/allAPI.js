@@ -84,3 +84,11 @@ export const updateUserAPI = async (userDetails) => {
 export const forgotEmailVerifyAPI = async (id, token) => {
   return await commonAPI("GET", `${server_URL}/password/${id}/forgot/verify/${token}`);
 };
+
+export const forgotPassCheckAPI = async (email) => {
+  return await commonAPI("POST",`${server_URL}/password/forgot`,{email})
+}
+
+export const updatePasswordAPI = async (token,newPassword) => {
+  return await commonAPI("POST",`${server_URL}/password/update`,{token,newPassword})
+}
